@@ -27,4 +27,7 @@ Bu Klasörün içinde Generic Veritabaný iþlemlerini yapan Metodlar bulunur. Bunlar
 
 7.Core Katamnýnda DataAcces klasörüne IEntityRepository ve EntityRepository Sýnýflarý eklenir. Bunlar Ortak iþlenler için. T generic þeklikde.
 
-8.
+8. DataAccess Katmanýna Baðlanmak istediðimiz Sýnýflarýn ýnterface ve Sýnýflarý Yazýlýr (IXXXRepository,XXXXRepository)
+Bu Sýnýflar IEntitiyReposity , EntitiyRepository Miras alýr. Burdaki T:XXX OLUR
+
+9.DataAccess Katmanýna  COntetxt Sýnýfý ve Býilderlar eklenir.

@@ -13,4 +13,14 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+    <Folder Include="Concrete\" />
+    <Folder Include="Concrete\EntityFramework\Seeds\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StockManagement.Entities\StockManagement.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
