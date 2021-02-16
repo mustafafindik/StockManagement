@@ -1,0 +1,30 @@
+
+
+
+
+1.Projeye Katlanlar Eklenir.
+  - Core
+  - Entities
+  - DataAccess 
+  - Bussiness
+  - APÝ
+  - ilerde Angular ve Test
+
+2.Core Katmanýna IEntiy Eklenir. (Entities Klasörü Altýna)
+  - Bu Veritabaný sýnýflarýný Sýnýflamak için Kullanýlacak.
+3.Entities katmanýna Concrete Klasörü Eklenir. Bunlar Veritabý Sýnýflarýný Tutmak için ve Ientity Interfaceni miras alýr
+Bu sayade tün veritabý nesneleri gruplanýr.
+Buraya Veritabýnda Kullanýlacak Sýnýflar Eklenir.
+
+4. Data Access Katmanýna EntitiyFrameworkCore, EntitiyFrameworkCore.SqlServer ( Bu Veritabanýna göre Deðir) ,EntitiyFrameworkCore.Tools Paketleri Yüklenir
+Bu Paketler ile sql Server baðlantýsý, migration gibi iþlemler yapýlýr.
+
+5.Data Access Katmanýna Abstract ve Concrete klasörleri Açýlýr. Bunlar Soyut ve Somut Sýnýflarý ayýrmak için.
+Sýnýflar ve Interfaceler Bunun içinde Bulunur
+
+6.Core Katmanýna DataAccess Base Repositorylerini Koymak için bir Bir klasör Açýlýr ( Bu tüm Projeler ortak olduðu için Core Katmanýnda)
+Bu Klasörün içinde Generic Veritabaný iþlemlerini yapan Metodlar bulunur. Bunlar her Repositorylerde ortak olduðu için Tek bir yerden yönetilir.
+
+7.Core Katamnýnda DataAcces klasörüne IEntityRepository ve EntityRepository Sýnýflarý eklenir. Bunlar Ortak iþlenler için. T generic þeklikde.
+
+8.
