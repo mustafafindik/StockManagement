@@ -21,7 +21,7 @@ namespace StockManagement.WepApi.Controllers
         }
 
         /// <summary>
-        /// Bu Tüm Listeyi döner get İsteği Herhangi parametre almadığı zaman Tüm Listeyi Döner
+        /// Get İsteği Herhangi parametre almadığı zaman Tüm Listeyi Döner
         /// </summary>
         /// <returns> İçinde Data Listesi Olan Bir IDataResult Döner</returns>
         [HttpGet]
@@ -38,7 +38,7 @@ namespace StockManagement.WepApi.Controllers
         }
 
         /// <summary>
-        /// Bu Tüm Listeyi döner get   parametre aldığı için id ye ait sonuçu döner
+        /// Get Medodu parametre aldığı için id ye ait sonuçu döner
         /// </summary>
         /// <returns> İçinde Data Bir IDataResult Döner</returns>
 
@@ -57,9 +57,9 @@ namespace StockManagement.WepApi.Controllers
 
 
         /// <summary>
-        /// Gerekli Sınıfın nesne örnegini alıp, Veritabanına Ekler
+        /// Metoda gelen nesne örnegini veritabanına ekler.
         /// </summary>
-        /// <returns> Mesaj olarak IResult Sınıfından döner.</returns>
+        /// <returns> Dönüş olarak IResult Sınıfından döner.</returns>
 
         [HttpPost("add")]
         public IActionResult Add(City city)
@@ -74,9 +74,9 @@ namespace StockManagement.WepApi.Controllers
         }
 
         /// <summary>
-        /// Gerekli Sınıfın nesne örnegini alıp, Veritabanında Günceller
+        /// Metoda gelen nesne örnegini veritabanında günceller.
         /// </summary>
-        /// <returns> Mesaj olarak IResult Sınıfından döner.</returns>
+        /// <returns> Dönüş olarak IResult Sınıfından döner.</returns>
         [HttpPost("update")]
         public IActionResult Update(City city)
         {
@@ -91,9 +91,9 @@ namespace StockManagement.WepApi.Controllers
 
 
         /// <summary>
-        /// Gerekli Sınıfın nesne örnegini alıp, Veritabanında Siler
+        /// Metoda gelen nesne örnegini veritabanından siler.
         /// </summary>
-        /// <returns> Mesaj olarak IResult Sınıfından döner.</returns>
+        /// <returns> Dönüş olarak IResult Sınıfından döner.</returns>
 
         [HttpPost("delete")]
         public IActionResult Delete(City city)
