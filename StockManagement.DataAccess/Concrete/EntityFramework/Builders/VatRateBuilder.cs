@@ -17,6 +17,8 @@ namespace StockManagement.DataAccess.Concrete.EntityFramework.Builders
         {
             builder.HasKey(p => p.Id);
             builder.Property(p => p.VatRateName).IsRequired().HasMaxLength(200);
+            builder.Property(p => p.VatRateValue).HasColumnType("decimal(18,2)");
+
         }
     }
 }

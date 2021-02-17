@@ -19,7 +19,7 @@ namespace StockManagement.DataAccess.Concrete.EntityFramework.Builders
             builder.HasKey(p => p.Id);
             builder.HasOne(p => p.StockType).WithMany(c => c.Stocks).HasForeignKey(p => p.StockTypeId);
             builder.HasOne(p => p.Product).WithMany(c => c.Stocks).HasForeignKey(p => p.ProductId);
-
+            builder.Property(p => p.Quantity).HasColumnType("decimal(18,2)");
         }
     }
 }

@@ -30,6 +30,10 @@ namespace StockManagement.DataAccess.Concrete.EntityFramework.Builders
             builder.HasOne(p => p.SalesVatRate).WithMany().HasForeignKey(p => p.SalesVatRateId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(p => p.Warehouse).WithMany(c => c.Products).HasForeignKey(p => p.WarehouseId);
             builder.HasOne(p => p.PurchaseVatRate).WithMany().HasForeignKey(p => p.PurchaseVatRateId).OnDelete(DeleteBehavior.Restrict);
+            builder.Property(p => p.PurchasePrice).HasColumnType("decimal(18,2)");
+            builder.Property(p => p.SalePrice).HasColumnType("decimal(18,2)");
+            builder.Property(p => p.Sim).HasColumnType("decimal(18,2)");
+
         }
     }
 

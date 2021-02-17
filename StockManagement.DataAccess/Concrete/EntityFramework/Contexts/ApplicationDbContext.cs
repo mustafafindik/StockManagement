@@ -22,7 +22,7 @@ namespace StockManagement.DataAccess.Concrete.EntityFramework.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                base.OnConfiguring(optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnectionString")));
+                base.OnConfiguring(optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnectionString"), b => b.MigrationsAssembly("StockManagement.WepApi")));
             }
         }
 

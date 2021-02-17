@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using StockManagement.DataAccess.Concrete.EntityFramework.Contexts;
 
 namespace StockManagement.WepApi
 {
@@ -27,6 +29,11 @@ namespace StockManagement.WepApi
         {
 
             services.AddControllers();
+            services.AddTransient<ApplicationDbContext>();
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("StockManagement.DataAccess"))
+                
+                );
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StockManagement.WepApi", Version = "v1" });
