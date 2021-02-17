@@ -7,5 +7,6 @@
 - Swagger
 -	AutoMapper
 - Fluent Validation
+- JWT
 - ...
 
