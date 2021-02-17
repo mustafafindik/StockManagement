@@ -20,7 +20,7 @@ namespace StockManagement.DataAccess.Concrete.EntityFramework
             CreatePasswordHash(password, out var passwordHash, out var passwordSalt);
 
             user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
+            user.PasswordKey = passwordSalt;
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
@@ -45,7 +45,7 @@ namespace StockManagement.DataAccess.Concrete.EntityFramework
                 return null;
             }
 
-            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordKey))
             {
                 return null;
             }
