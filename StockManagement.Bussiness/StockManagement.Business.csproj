@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\StockManagement.DataAccess\StockManagement.DataAccess.csproj" />
     <ProjectReference Include="..\StockManagement.Entities\StockManagement.Entities.csproj" />
   </ItemGroup>

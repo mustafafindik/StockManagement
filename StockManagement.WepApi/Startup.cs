@@ -34,13 +34,8 @@ namespace StockManagement.WepApi
 
             services.AddControllers();
             services.AddTransient<ApplicationDbContext>();
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("StockManagement.DataAccess"))
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("StockManagement.DataAccess")));
 
-                );
-
-            services.AddTransient<ICityRepository, CityRepository>();
-            services.AddTransient<ICityService, CityService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StockManagement.WepApi", Version = "v1" });

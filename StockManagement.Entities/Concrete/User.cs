@@ -1,4 +1,5 @@
-﻿using StockManagement.Core.Entities;
+﻿using System.Collections.Generic;
+using StockManagement.Core.Entities;
 
 namespace StockManagement.Entities.Concrete
 {
@@ -13,8 +14,11 @@ namespace StockManagement.Entities.Concrete
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public bool IsActive { get; set; }
         public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
+        public byte[] PasswordKey { get; set; }
+
+        public virtual IEnumerable<UserRole> UserRoles { get; set; }
 
 
     }

@@ -49,4 +49,13 @@ IDataResult ,DataResult , SuccessDataResult ,ErrorDataResult
 
 14. Api Katmanýna ilgili Sýnýfýn Contorolleri eklenir, (Api Controller) -  Daha Sonra Gerekli Metodlar yazýlýr ve Business Katmanýndan Çagrýlýr.
 
-15.
+15. Bussines Katmanýna Autofac paketi Yüklenir. Ve içine "DependecyResolver" klasörü açýlýr. Onun Altýna "Autofac" klasörü açýlýr.
+ilerde baþka bir IoC container kullanacaðýmýz zaman ona ait klasör açabiliriz.
+
+16. Daha Sonra Autofac klasörü altýna BussinessModule clasý eklenir ve Dependenyler eklenir.
+
+17 Bu Eklenen Modulu program.cs de tanýtmak için gerekli kod eklenir.
+.UseServiceProviderFactory(new AutofacServiceProviderFactory(builder=>builder.RegisterModule(new BusinessModule())))
+
+18. 
+
