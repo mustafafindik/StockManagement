@@ -45,4 +45,8 @@ daha sonra migration Komutu Çagrýlýr
 IResult,Result SuccessResult,ErrorResult
 IDataResult ,DataResult , SuccessDataResult ,ErrorDataResult
 
-13.
+13. Daha Sonra Bussiness Katmanýna Veritaný Sýnýfý Ýçin IResult , IData Result Dönen Metodlar Eklenir. GetAll,GetById,Add,Update,Delete..
+
+14. Api Katmanýna ilgili Sýnýfýn Contorolleri eklenir, (Api Controller) -  Daha Sonra Gerekli Metodlar yazýlýr ve Business Katmanýndan Çagrýlýr.
+
+15.
