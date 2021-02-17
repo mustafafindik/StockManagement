@@ -6,5 +6,6 @@
 - AOP - AutoFac
 - Swagger
 -	AutoMapper
-- ....
+- Fluent Validation
+- ...
 
