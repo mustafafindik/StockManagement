@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using StockManagement.Core.Entities.Concrete;
 using StockManagement.Entities.Concrete;
 
 namespace StockManagement.DataAccess.Abstract

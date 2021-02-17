@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using StockManagement.Core.Entities.Concrete;
 using StockManagement.DataAccess.Concrete.EntityFramework.Builders;
 using StockManagement.Entities.Concrete;
 

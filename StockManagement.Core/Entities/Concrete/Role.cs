@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using StockManagement.Core.Entities;
+﻿using System.Collections.Generic;
 
-namespace StockManagement.Entities.Concrete
+namespace StockManagement.Core.Entities.Concrete
 {
     public class Role:IEntity
     {

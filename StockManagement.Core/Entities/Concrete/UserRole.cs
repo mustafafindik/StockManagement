@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using StockManagement.Core.Entities;
-
-namespace StockManagement.Entities.Concrete
+﻿namespace StockManagement.Core.Entities.Concrete
 {
     public class UserRole :IEntity
     {

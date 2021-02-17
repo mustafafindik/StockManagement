@@ -57,5 +57,21 @@ ilerde baþka bir IoC container kullanacaðýmýz zaman ona ait klasör açabiliriz.
 17 Bu Eklenen Modulu program.cs de tanýtmak için gerekli kod eklenir.
 .UseServiceProviderFactory(new AutofacServiceProviderFactory(builder=>builder.RegisterModule(new BusinessModule())))
 
-18. 
+18. Core Katmanýnda Entities Altýnda Concrete altýna Role,User ve UserRole tablolarý açýlýr.
+Bunlar veritanýnda Kullanýcýnýn bilgileri, Role bilgileri ve kullanýnlarýn Rollerini tutar. User ve Role arasýnda Çoka Çok iliþki vardýr
+
+19. DataAccess Katmanýnda Builders Klasörü altýnda Role,User ve UserRole için Builderler Tanýmlanýr.
+
+20. User,Role,UserRole Ýçin Tanýmlanan Builder ve DbSetler Context alýndaki DbContext Sýnýnda Set Edilir. ve Migration Atýlýr.. Db güncellemesi Yapýlýr
+
+21.DataAccess Katmanýnda IUserReposity ve Somutu UserRepository Tanýmlanýr. Ekstra olarak Kullanucu Rollerni Çeken bir Metod Ýmza edilir ve Metodu yazýlýr.
+
+22.Bussiness Katmanýnda IUserService  ve Somutu UserService Eklenir. 
+Eklenen Bu IUserService, UserSevice ve Repositoryler Autofac için BussinessModule Eklenir.
+
+23.Entities Katmanýnda Dto Klasörü Eklenir ve Login,Register için Dto Sýnýflarý yazýlýr.
+Bu Sýnýflar Core/Entities Altýndaki IDto implement edilir. (Dto larý gruplandýrmak için)
+
+24. Core Katmanunda Utilities Klasörü altýna Security Klasörü eklenir. Onun altýna da Jwt  klasörü (ilerde Token kütüphanesi deðiþebilir)
+jWt Altýna AccessToken ve ITokenHelper Sýnýflarý Eklenir.
 

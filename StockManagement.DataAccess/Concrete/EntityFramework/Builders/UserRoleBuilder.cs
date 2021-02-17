@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using StockManagement.Core.Entities.Concrete;
 using StockManagement.Entities.Concrete;
 
 namespace StockManagement.DataAccess.Concrete.EntityFramework.Builders
 {
+    /// <summary>
+    /// Burada User ve Role Arasında Çoka Çok ilişki olduğu için Ara Sınıf kullanıldı. 
+    /// </summary>
     public class UserRoleBuilder : IEntityTypeConfiguration<UserRole>
     {
         public void Configure(EntityTypeBuilder<UserRole> builder)

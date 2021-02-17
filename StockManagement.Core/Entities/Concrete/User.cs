@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using StockManagement.Core.Entities;
 
-namespace StockManagement.Entities.Concrete
+namespace StockManagement.Core.Entities.Concrete
 {
     public class User:IEntity
     {
