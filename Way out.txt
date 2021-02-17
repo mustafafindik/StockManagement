@@ -31,3 +31,18 @@ Bu Klasörün içinde Generic Veritabaný iþlemlerini yapan Metodlar bulunur. Bunlar
 Bu Sýnýflar IEntitiyReposity , EntitiyRepository Miras alýr. Burdaki T:XXX OLUR
 
 9.DataAccess Katmanýna  COntetxt Sýnýfý ve Býilderlar eklenir.
+
+10. StartUp'a Çagýrmak Ýstediðimiz DbContext yazýlýr. Bu Servis içinde Connectionstring Appsetting.json'dan alýnýr.
+daha sonra migration Komutu Çagrýlýr
+ Add-Migration InitialCreate -project StockManagement.DataAccess
+ ve Veritabanýna migration Gönderilir.
+ update-database
+
+11. Ýþ Katmanýna Gerekli Entitylerin iþ metodlarýný yapacak Soyut ve Somut Sýnýflarý Eklenir.
+(ICityService,CityService)
+
+12. Core Katmanýna Sonuçlarý Belirli Ölçekte Stabil Hale getirmek için Result klasörü Eklenir.
+IResult,Result SuccessResult,ErrorResult
+IDataResult ,DataResult , SuccessDataResult ,ErrorDataResult
+
+13.

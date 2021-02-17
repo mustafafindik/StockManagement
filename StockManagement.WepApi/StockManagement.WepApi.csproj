@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StockManagement.Bussiness\StockManagement.Bussiness.csproj" />
+    <ProjectReference Include="..\StockManagement.Bussiness\StockManagement.Business.csproj" />
     <ProjectReference Include="..\StockManagement.DataAccess\StockManagement.DataAccess.csproj" />
   </ItemGroup>
 

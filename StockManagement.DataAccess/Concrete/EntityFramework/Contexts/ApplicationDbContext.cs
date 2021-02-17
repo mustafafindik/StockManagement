@@ -8,6 +8,7 @@ namespace StockManagement.DataAccess.Concrete.EntityFramework.Contexts
     /// <summary>
     /// Options Base Demek Veritabanı Yolu Startuptan AppsettingJsondan alınacak.
     /// DBSET veritabanı nesneleri
+    /// Buildirlar gerekli Sınıfların Kısıtlarını ve ve Özeiiklerini belirtir. FluenApi
     /// </summary>
     public class ApplicationDbContext : DbContext
     {

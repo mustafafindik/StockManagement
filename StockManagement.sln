@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManagement.Core", "Sto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManagement.DataAccess", "StockManagement.DataAccess\StockManagement.DataAccess.csproj", "{E344DA6E-6BFE-45E3-B435-757445D7E29B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManagement.Bussiness", "StockManagement.Bussiness\StockManagement.Bussiness.csproj", "{0A36A698-88A7-42A5-AC18-633CE6CAFF6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManagement.Business", "StockManagement.Bussiness\StockManagement.Business.csproj", "{0A36A698-88A7-42A5-AC18-633CE6CAFF6F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManagement.Entities", "StockManagement.Entities\StockManagement.Entities.csproj", "{8E9D577D-5FE2-4DBB-8B93-701E7D3A1777}"
 EndProject
