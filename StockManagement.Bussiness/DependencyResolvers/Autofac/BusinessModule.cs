@@ -4,6 +4,7 @@ using System.Text;
 using Autofac;
 using StockManagement.Business.Abstract;
 using StockManagement.Business.Concrete;
+using StockManagement.Core.Utilities.Security.Jwt;
 using StockManagement.DataAccess.Abstract;
 using StockManagement.DataAccess.Concrete.EntityFramework;
 
@@ -21,6 +22,9 @@ namespace StockManagement.Business.DependencyResolvers.Autofac
 
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<UserRepository>().As<IUserRepository>();
+
+            builder.RegisterType<AuthService>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
         }
     }
 }

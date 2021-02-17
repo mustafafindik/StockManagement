@@ -10,6 +10,6 @@ namespace StockManagement.Core.Utilities.Security.Jwt
     /// </summary>
     public interface ITokenHelper
     {
-        AccessToken CreateToken(User user, List<Role> Roles);
+        AccessToken CreateToken(User user, List<Role> roles);
     }
 }

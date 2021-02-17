@@ -75,3 +75,32 @@ Bu Sýnýflar Core/Entities Altýndaki IDto implement edilir. (Dto larý gruplandýrm
 24. Core Katmanunda Utilities Klasörü altýna Security Klasörü eklenir. Onun altýna da Jwt  klasörü (ilerde Token kütüphanesi deðiþebilir)
 jWt Altýna AccessToken ve ITokenHelper Sýnýflarý Eklenir.
 
+25. Daha Sonra TokenOptions ve JwtHelper Eklenir. TOkenOptions token ayarlarýný Apsetiting.json dan almak için 
+JwtHelper ise Token Oluþturmak için
+
+26.JwtTokenHelper yazarken Token içine Belli kullanucu bilgileri ve Roller eklemesi gerekmektedir. Bunun için 
+Core Katmanýna Extentions klasörü açýlýr ve  ClaimExtensions , ClaimsPrincipalExtensions ile ClaimPrinciple ve Claim Listesi Extend Edilir.
+
+27.JwtTokenHelper yazarken Belirli Enciprion iþlemeri olacagý için Core,Utilities,Security altýna Encription klasörü açýlýr ve 
+SecurityKeyHelper , SigningCredentialsHelper Sýnýflarý yazýlýr. Bunlar SymmetricSecurityKey, ve SigningCredentials döner.
+
+28.Bussiness Katmanýna IAUTHService ve Somutu AuthService eklenir. Bunlar kullanýcýnýn login ve Register iþlemleri için kullanýlýr.
+Ancak kullanýcýdan gelen þifreyi hashlemk ve Dogrulamak için Core,Utilities,Security altýna Hashing klasögrü açýlýr ve HashingHelper Sýnýfý eklenir
+Amacý gelen þifreleri hashlemek ve dogrulamak
+
+29. Eklenek iki Sýnýf için BussinessModule Ekleme yapýplýr
+
+30. Api Katmanýnda AuthController eklenir ve Login ve Register Metodlarý yazýlýr.
+
+31. Gerekli Cors , JwtValidation için Startup.cs ek gerekli parametreler eklenir.
+services.AddAuthentication  ve services.AddCors
+
+32. Gerekli Test Yapýlarak Kullanýcý Register olup Token alýyor mu ? Login Olup Token alýyor mu kontrol edilir.
+
+33. Veritanýndan Bir rol eklenir xxx, Eklenen Rol Kullanýcýya atanýr xxx(ýdsi) ve UserId
+
+34. Seçilen bir metodun üstüne attribute olarak  [Authorize(Roles = "xxxx")] verilir.
+Kullanýcý login olduðu tokený alýp, Postmanda Headerda seçilen Metoda istek yapar ve Eriþim var mý kontrol eder.
+header => key : Authorization Pr: Breaer token
+
+35.

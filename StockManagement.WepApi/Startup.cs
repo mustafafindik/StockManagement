@@ -10,9 +10,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using StockManagement.Business.Abstract;
 using StockManagement.Business.Concrete;
+using StockManagement.Core.Utilities.Security.Encyption;
+using StockManagement.Core.Utilities.Security.Jwt;
 using StockManagement.DataAccess.Abstract;
 using StockManagement.DataAccess.Concrete.EntityFramework;
 using StockManagement.DataAccess.Concrete.EntityFramework.Contexts;
@@ -36,6 +40,34 @@ namespace StockManagement.WepApi
             services.AddTransient<ApplicationDbContext>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("StockManagement.DataAccess")));
 
+            //Cors AppsttingJson'dan al
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder => builder.AllowAnyOrigin());
+            });
+            // Token Ayarlarý
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
+            //Token için Validate Kurallarý
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidIssuer = tokenOptions.Issuer,
+                        ValidAudience = tokenOptions.Audience,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+                    };
+                });
+
+
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StockManagement.WepApi", Version = "v1" });
@@ -52,7 +84,12 @@ namespace StockManagement.WepApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "StockManagement.WepApi v1"));
             }
 
+            //Cors AppsttingJson'dan al
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader());
+
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
