@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using StockManagement.Core.DependencyResolvers;
+using StockManagement.Core.Extensions;
+using StockManagement.Core.Utilities.IoC;
 using StockManagement.Core.Utilities.Security.Encyption;
 using StockManagement.Core.Utilities.Security.Jwt;
 using StockManagement.DataAccess.Concrete.EntityFramework.Contexts;
@@ -56,7 +59,10 @@ namespace StockManagement.WepApi
                 });
 
 
-
+            services.AddDependencyResolvers(new ICoreModule[]
+            {
+                new CoreModule(),
+            });
 
             services.AddSwaggerGen(c =>
             {

@@ -139,8 +139,24 @@ eklenir. ve AspectInterceptorSelector Yazýlmasý gereklidir.  Core Katmanýnda Uti
 ve MethodInterception Miras Verili.  daha sonra Intercept metodu ezilerek. try catxh içinde yazýlýr. Catch içine düþerse Transaction Dispose edilir.
 eger try içinde kalýrsa Complete
 
-46
+46. Kullanacagýmýz Cache Kütüphanesi için Core Katmanýnda CrossCuttingConcerns altýna Caching klasörü açýlýr ve ICacheService Interface Eklenir.
+Bunlar Get (T Gen), Get(object) , add ..  Benzeri Metod imzalarýný tutar.
+
+47. Ayný klasörün içine Microsoft Klasörü Açýlýr. Çünkü ilerde Cache kütüphanesi deðiþebilir. (Redis Kullanýlabilir)
+Bu klasörün içine MemoryCacheService Sýnýfý Eklnir. IMemoryCache Kütüphanesi kullanarak Gerekli Metodlar doldurulur
+
+48. Daha sonra Core Katmanýna Autofac Klasörü altýna Caching Klasörü eklenir ve Ýçine CacheAspect ve CacheRemoveAspect Sýnýflarý Eklnirç.
 
 
+49. StartUp.cs de yazýlan Dependecyleri Core Katmanýna taþýmak için Utilities klasörürüne IoC klasörü açýlýrç
+Ýçine ICoreModule interface i eklenir. Bu ServiceCollentionlarý Load etmek için bir metod imzasý taþýr.
+
+50.Core Katmanýnda DependencyResolver Klasörü altýna CoreModule Sýnýfý Eklenir ve ICoreModule Ýmplement edilir.
+Buradakli Load Metoduna gerekli Servicesler eklenir. Örneðin
+ services.AddMemoryCache();
+
+51.Bu Ýþlemleri kullanmak için ServiceCollection'a Extension yazýlýr ve Oýc altýna ServiceHelper Sýnýfý Eklenir. Biz servisleri çagýrmak için genelde bunu kullanacaðýz.
+
+52.Daha Sonra Eklenen CacheAspect Test edilir.
 
                 

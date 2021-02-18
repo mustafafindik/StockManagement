@@ -6,6 +6,7 @@ using StockManagement.DataAccess.Abstract;
 using StockManagement.Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
+using StockManagement.Core.Aspects.Autofac.Caching;
 using StockManagement.Core.Aspects.Autofac.Transaction;
 
 namespace StockManagement.Business.Concrete
@@ -23,7 +24,8 @@ namespace StockManagement.Business.Concrete
             _cityRepository = cityRepository;
         }
 
-
+        
+        [CacheAspect] ///Verileri Cache alır
         public IDataResult<City> GetById(int cityId)
         {
             var query = _cityRepository.Get(p => p.Id == cityId);
@@ -31,35 +33,41 @@ namespace StockManagement.Business.Concrete
 
         }
 
-        [TransactionScopeAspect]
-        [ValidationAspect(typeof(CityValidator), Priority = 1)]
+       
+        [ValidationAspect(typeof(CityValidator), Priority = 1)] //Gelen Veriyi Validate eder
+        [TransactionScopeAspect] //Ekleme İşleminde Hata Olursa Geri alır Db ye Kayıt etmez
+        [CacheRemoveAspect("ICityService.Get")] //Yeni veri eklendiği için ICityService.Get Metodlarındalari cacheleri temizler
         public IResult Add(City city)
         {
             _cityRepository.Add(city);
             return new SuccessResult("Şehir Başarıyla Eklendi.");
         }
 
-        [TransactionScopeAspect]
+        [TransactionScopeAspect] //Silme İşleminde Hata Olursa Geri alır Db ye Kayıt etmez
+        [CacheRemoveAspect("ICityService.Get")] // veri Silindiğnde için ICityService.Get Metodlarındalari cacheleri temizler
         public IResult Delete(City city)
         {
             _cityRepository.Delete(city);
             return new SuccessResult("Şehir Başarıyla Silindi.");
         }
 
-        [TransactionScopeAspect]
+        [ValidationAspect(typeof(CityValidator), Priority = 1)]//Gelen Veriyi Validate eder
+        [TransactionScopeAspect]//Güncelleme İşleminde Hata Olursa Geri alır Db ye Kayıt etmez
+        [CacheRemoveAspect("ICityService.Get")] // veri Güncelleme için ICityService.Get Metodlarındalari cacheleri temizler
         public IResult Update(City city)
         {
             _cityRepository.Update(city);
             return new SuccessResult("Şehir Başarıyla Güncellendi.");
         }
 
-        IDataResult<List<City>> ICityService.GetAll()
+        [CacheAspect]
+        public IDataResult<List<City>> GetAll()
         {
             var query = _cityRepository.GetAll().ToList();
             return new SuccessDataResult<List<City>>(query, "Şehirler Başarıyla Alındı.");
         }
 
 
-       
+
     }
 }
