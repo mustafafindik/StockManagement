@@ -3,7 +3,7 @@
 
 ### Techs
 - N-Tiers Degisn
-- AOP - AutoFac
+- AOP - AutoFac  [cache,transaction,validation..]
 - Swagger
 -	AutoMapper
 - Fluent Validation
