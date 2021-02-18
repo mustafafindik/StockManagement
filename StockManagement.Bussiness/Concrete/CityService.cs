@@ -6,6 +6,7 @@ using StockManagement.DataAccess.Abstract;
 using StockManagement.Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
+using StockManagement.Core.Aspects.Autofac.Transaction;
 
 namespace StockManagement.Business.Concrete
 {
@@ -30,6 +31,7 @@ namespace StockManagement.Business.Concrete
 
         }
 
+        [TransactionScopeAspect]
         [ValidationAspect(typeof(CityValidator), Priority = 1)]
         public IResult Add(City city)
         {
@@ -37,12 +39,14 @@ namespace StockManagement.Business.Concrete
             return new SuccessResult("Şehir Başarıyla Eklendi.");
         }
 
+        [TransactionScopeAspect]
         public IResult Delete(City city)
         {
             _cityRepository.Delete(city);
             return new SuccessResult("Şehir Başarıyla Silindi.");
         }
 
+        [TransactionScopeAspect]
         public IResult Update(City city)
         {
             _cityRepository.Update(city);
@@ -54,5 +58,8 @@ namespace StockManagement.Business.Concrete
             var query = _cityRepository.GetAll().ToList();
             return new SuccessDataResult<List<City>>(query, "Şehirler Başarıyla Alındı.");
         }
+
+
+       
     }
 }

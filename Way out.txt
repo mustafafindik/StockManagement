@@ -135,6 +135,12 @@ eklenir. ve AspectInterceptorSelector Yazýlmasý gereklidir.  Core Katmanýnda Uti
 44.Daha sonra Bussines katmanýnda Validation Test Edilir.
 [ValidationAspect(typeof(xxxxalidator), Priority = 1)]
 
+45. Core Katmanýna Asprect=>Autofac altýna Transaction klasörü altna TransactionScopeAspect Sýnýfý açýlýr.
+ve MethodInterception Miras Verili.  daha sonra Intercept metodu ezilerek. try catxh içinde yazýlýr. Catch içine düþerse Transaction Dispose edilir.
+eger try içinde kalýrsa Complete
+
+46
+
 
 
                 
