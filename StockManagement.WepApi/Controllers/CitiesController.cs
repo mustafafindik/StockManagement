@@ -4,8 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using StockManagement.Business.Abstract;
+using StockManagement.Business.ValidationRules.FluentValidation;
+using StockManagement.Core.CrossCuttingConcerns.Validation;
 using StockManagement.Entities.Concrete;
 
 namespace StockManagement.WepApi.Controllers
@@ -66,6 +69,9 @@ namespace StockManagement.WepApi.Controllers
         [HttpPost("add")]
         public IActionResult Add(City city)
         {
+            ValidationHelper.Validate(new CityValidator(),city);
+           
+
             var result = _cityService.Add(city);
             if (result.IsSuccess)
             {

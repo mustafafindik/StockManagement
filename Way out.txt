@@ -103,4 +103,14 @@ services.AddAuthentication  ve services.AddCors
 Kullanýcý login olduðu tokený alýp, Postmanda Headerda seçilen Metoda istek yapar ve Eriþim var mý kontrol eder.
 header => key : Authorization Pr: Breaer token
 
-35.
+35. Bussines Katmanýna ValidationRules klasörü açýlýr ve için Kullanacaðýmýz FluentValidation klasörü açýýlýr. Ýlerde farklý Paketler kullanabiliriz.
+Sonra Fluent Validation Bussiness Katmanýna yüklenir.
+
+36.FluenTValidation klasörüne Ýlgili Sýnýf ile ilgili Kurallarý eklemek için Sýnýf açýlýr ve AbstractValidator<t> den Miras alýr.
+
+37. Bu Sýnýf Ýçine bilirli kurallar yazýlýr ctor içinde.
+
+38. Daha sonra Bu Kurallar ilgili Sýnýfýn add, Update metodlarýnda çagrýlabilir. Ancak Her yere ayný kodu yazmamak için sistemi Merkezi hale getiriyoruz.
+Core katmanýna CrossCuttingCýncerns altýna Validation altýna ValidationHelper Sýnýfý açýlýr ve Ivalidaor ve nesne parametleri ile sistem merkezi hale getirilir.
+
+39.
