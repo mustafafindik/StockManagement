@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StockManagement.Core.Utilities.Results
+﻿namespace StockManagement.Core.Utilities.Results
 {
-    public class Result:IResult
+    public class Result : IResult
     {
         /// <summary>
         ///  Burada Eğer Kullaınıcı Hem Sonucun Durumunu Hemde Mesaj göndermek isterse.

@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using StockManagement.Core.Entities.Concrete;
 using StockManagement.DataAccess.Abstract;
 using StockManagement.DataAccess.Concrete.EntityFramework.Contexts;
-using StockManagement.Entities.Concrete;
+using System.Threading.Tasks;
 
 namespace StockManagement.DataAccess.Concrete.EntityFramework
 {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using StockManagement.Business.Abstract;
+﻿using StockManagement.Business.Abstract;
 using StockManagement.Core.Entities.Concrete;
 using StockManagement.Core.Utilities.Results;
 using StockManagement.Core.Utilities.Security.Hashing;
@@ -34,7 +31,7 @@ namespace StockManagement.Business.Concrete
                 LastName = registerDto.LastName,
                 PasswordHash = passwordHash,
                 PasswordKey = passwordKey,
-                IsActive= true
+                IsActive = true
             };
             _userService.Add(user);
             return new SuccessDataResult<User>(user, "Kullanıcı Kayıt Edildi.");

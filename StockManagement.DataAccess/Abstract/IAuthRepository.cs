@@ -1,6 +1,5 @@
-﻿using System.Threading.Tasks;
-using StockManagement.Core.Entities.Concrete;
-using StockManagement.Entities.Concrete;
+﻿using StockManagement.Core.Entities.Concrete;
+using System.Threading.Tasks;
 
 namespace StockManagement.DataAccess.Abstract
 {

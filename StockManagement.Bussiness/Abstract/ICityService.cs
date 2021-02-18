@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using StockManagement.Core.Utilities.Results;
+﻿using StockManagement.Core.Utilities.Results;
 using StockManagement.Entities.Concrete;
+using System.Collections.Generic;
 
 namespace StockManagement.Business.Abstract
 {

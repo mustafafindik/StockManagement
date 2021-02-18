@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StockManagement.Core.Utilities.Results
+﻿namespace StockManagement.Core.Utilities.Results
 {
     /// <summary>
     /// Burada Eger İşlem başarılı olmassa direk bu sınıfı çagırıp Issuccess değeri false olarak işaretlenmiştir.

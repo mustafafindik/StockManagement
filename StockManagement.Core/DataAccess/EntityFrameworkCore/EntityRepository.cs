@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using StockManagement.Core.Entities;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using StockManagement.Core.Entities;
 
 namespace StockManagement.Core.DataAccess.EntityFrameworkCore
 {
@@ -13,7 +11,7 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
     /// </summary>
     /// <typeparam name="T">Buradaki T Veritabanı Sınıflarından herangi birini alabilir.</typeparam>
     /// <typeparam name="TContext">Bu Veritabanı DbContext Sınıfından türeilmiş Sınıf</typeparam>
-    public class EntityRepository<T, TContext> : IEntityRepository<T> where T : class, IEntity, new() where  TContext: DbContext
+    public class EntityRepository<T, TContext> : IEntityRepository<T> where T : class, IEntity, new() where TContext : DbContext
     {
         private readonly TContext _context;
 
@@ -24,71 +22,71 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
 
         public T Get(Expression<Func<T, bool>> predicate)
         {
-            
-                return _context.Set<T>().SingleOrDefault(predicate);
-             
+
+            return _context.Set<T>().SingleOrDefault(predicate);
+
         }
 
         public T Get(Expression<Func<T, bool>> predicate, params string[] nav)
         {
-             
-             
-                var query = _context.Set<T>();
-                query = nav.Aggregate(query, (current, n) => (DbSet<T>) current.Include(n));
-                return query.SingleOrDefault(predicate);
-            
+
+
+            var query = _context.Set<T>();
+            query = nav.Aggregate(query, (current, n) => (DbSet<T>)current.Include(n));
+            return query.SingleOrDefault(predicate);
+
         }
 
         public IQueryable<T> GetAll(Expression<Func<T, bool>> predicate = null)
         {
-             
-                return predicate == null ? _context.Set<T>() : _context.Set<T>().Where(predicate);
-            
+
+            return predicate == null ? _context.Set<T>() : _context.Set<T>().Where(predicate);
+
         }
 
         public IQueryable<T> GetAll(params string[] nav)
         {
-            
-                var query = _context.Set<T>();
-                query = nav.Aggregate(query, (current, n) => (DbSet<T>)current.Include(n));
-                return query;
- 
+
+            var query = _context.Set<T>();
+            query = nav.Aggregate(query, (current, n) => (DbSet<T>)current.Include(n));
+            return query;
+
         }
 
         public IQueryable<T> GetAll(Expression<Func<T, bool>> predicate = null, params string[] nav)
         {
-             
-                var query =  predicate == null ? _context.Set<T>() : _context.Set<T>().Where(predicate);
-                query = nav.Aggregate(query, (current, n) => (DbSet<T>)current.Include(n));
-                return query;
-             
+
+            var query = predicate == null ? _context.Set<T>() : _context.Set<T>().Where(predicate);
+            query = nav.Aggregate(query, (current, n) => (DbSet<T>)current.Include(n));
+            return query;
+
         }
 
         public void Add(T entity)
         {
-             
-                var addedEntityEntry = _context.Entry(entity);
-                addedEntityEntry.State = EntityState.Added;
-                _context.SaveChanges();
-             
+
+            var addedEntityEntry = _context.Entry(entity);
+            addedEntityEntry.State = EntityState.Added;
+            _context.SaveChanges();
+
         }
 
         public void Delete(T entity)
         {
-            
-                var deletedEntityEntry = _context.Entry(entity);
-                deletedEntityEntry.State = EntityState.Deleted;
-                _context.SaveChanges();
-            
+
+            var deletedEntityEntry = _context.Entry(entity);
+            deletedEntityEntry.State = EntityState.Deleted;
+            _context.SaveChanges();
+
         }
 
         public void Update(T entity)
         {
-             
-                var modifiedEntityEntry = _context.Entry(entity);
-                modifiedEntityEntry.State = EntityState.Modified;
-                _context.SaveChanges();
-             
+
+            var modifiedEntityEntry = _context.Entry(entity);
+            modifiedEntityEntry.State = EntityState.Modified;
+            _context.SaveChanges();
+
         }
     }
 }

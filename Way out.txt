@@ -113,4 +113,28 @@ Sonra Fluent Validation Bussiness Katmanýna yüklenir.
 38. Daha sonra Bu Kurallar ilgili Sýnýfýn add, Update metodlarýnda çagrýlabilir. Ancak Her yere ayný kodu yazmamak için sistemi Merkezi hale getiriyoruz.
 Core katmanýna CrossCuttingCýncerns altýna Validation altýna ValidationHelper Sýnýfý açýlýr ve Ivalidaor ve nesne parametleri ile sistem merkezi hale getirilir.
 
-39.
+39. Aspect ler için Core Katmanýna Utilities altýna Interceptors klasötrü açýlýr.
+MethodInterceptionBaseAttribute ve MethodInterception Sýnýflarýnýn amamacý Verilen Aspectlerin Çalýþma Sýrasý, Attrubute özellikleri ..
+
+40.Validation Aspect için Core Katmanýna Aspects klasörü altýna , Autofac altýna Validation Eklenir.
+Ve ValidationAspect sýnýfý açýlýr.
+
+41. Burada ValidationAspect Sýnýfý Ýþlemden Önce çalýþacaðý için OnBefoore Ezilerek Üstüne çalýþacak Metod Eklenir. Ve Core Katmanýna Autofac.Dynanic.Proxy paketi yüklenir.
+
+42. Bu Aspectlerin Çagrýlmasý için BussinessModule 'e 
+var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions()
+                {
+                    Selector = new AspectInterceptorSelector()
+                }).SingleInstance();
+
+eklenir. ve AspectInterceptorSelector Yazýlmasý gereklidir.  Core Katmanýnda Utilities altýna AspectInterceptorSelector Sýnýfý Açýlýr.
+
+44.Daha sonra Bussines katmanýnda Validation Test Edilir.
+[ValidationAspect(typeof(xxxxalidator), Priority = 1)]
+
+
+
+                

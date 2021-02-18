@@ -5,7 +5,7 @@ using StockManagement.Entities.Concrete;
 
 namespace StockManagement.DataAccess.Concrete.EntityFramework
 {
-    public class CategoryRepository : EntityRepository<Category,ApplicationDbContext>, ICategoryRepository
+    public class CategoryRepository : EntityRepository<Category, ApplicationDbContext>, ICategoryRepository
     {
         public CategoryRepository(ApplicationDbContext context) : base(context)
         {

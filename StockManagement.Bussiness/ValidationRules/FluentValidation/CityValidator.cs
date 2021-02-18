@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FluentValidation;
+﻿using FluentValidation;
 using StockManagement.Entities.Concrete;
 
 namespace StockManagement.Business.ValidationRules.FluentValidation
 {
-    public class CityValidator:AbstractValidator<City>
+    public class CityValidator : AbstractValidator<City>
     {
         /// <summary>
         /// Burada City İle ilgili Validation Kuralları yazılır.
@@ -16,7 +13,7 @@ namespace StockManagement.Business.ValidationRules.FluentValidation
         {
             RuleFor(c => c.CityName).NotEmpty();
             RuleFor(c => c.CityName).MinimumLength(2);
-           
+
         }
     }
 }

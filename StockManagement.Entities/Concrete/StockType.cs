@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using StockManagement.Core.Entities;
+﻿using StockManagement.Core.Entities;
+using System.Collections.Generic;
 
 namespace StockManagement.Entities.Concrete
 {

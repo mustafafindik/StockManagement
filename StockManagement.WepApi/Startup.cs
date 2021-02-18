@@ -1,24 +1,14 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using StockManagement.Business.Abstract;
-using StockManagement.Business.Concrete;
+using Microsoft.OpenApi.Models;
 using StockManagement.Core.Utilities.Security.Encyption;
 using StockManagement.Core.Utilities.Security.Jwt;
-using StockManagement.DataAccess.Abstract;
-using StockManagement.DataAccess.Concrete.EntityFramework;
 using StockManagement.DataAccess.Concrete.EntityFramework.Contexts;
 
 namespace StockManagement.WepApi

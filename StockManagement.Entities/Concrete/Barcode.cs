@@ -1,4 +1,4 @@
-﻿ 
+﻿
 
 using StockManagement.Core.Entities;
 

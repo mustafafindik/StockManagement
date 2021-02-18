@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using StockManagement.Core.DataAccess.EntityFrameworkCore;
 using StockManagement.Core.Entities.Concrete;
 using StockManagement.DataAccess.Abstract;
 using StockManagement.DataAccess.Concrete.EntityFramework.Contexts;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StockManagement.DataAccess.Concrete.EntityFramework
 {
-    public class UserRepository: EntityRepository<User, ApplicationDbContext>,IUserRepository
+    public class UserRepository : EntityRepository<User, ApplicationDbContext>, IUserRepository
     {
         private readonly ApplicationDbContext _context;
         public UserRepository(ApplicationDbContext context) : base(context)

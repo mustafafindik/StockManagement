@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StockManagement.Core.Utilities.Results
+﻿namespace StockManagement.Core.Utilities.Results
 {
     /// <summary>
     ///  Burada İşlem Sonucu Başarılı oldu mu ve duruma göre Mesaj Dönmek için
@@ -11,6 +7,6 @@ namespace StockManagement.Core.Utilities.Results
     public interface IResult
     {
         bool IsSuccess { get; }
-        string Message { get;  }
+        string Message { get; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿
-using System;
 using StockManagement.Core.Entities;
+using System;
 
 namespace StockManagement.Entities.Concrete
 {

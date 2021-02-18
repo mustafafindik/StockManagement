@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using StockManagement.Core.Entities.Concrete;
+﻿using StockManagement.Core.Entities.Concrete;
 using StockManagement.Core.Utilities.Results;
 using StockManagement.Core.Utilities.Security.Jwt;
 using StockManagement.Entities.Dto;

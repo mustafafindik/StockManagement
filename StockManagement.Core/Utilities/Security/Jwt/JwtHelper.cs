@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using StockManagement.Core.Entities.Concrete;
 using StockManagement.Core.Extensions;
 using StockManagement.Core.Utilities.Security.Encyption;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
 
 namespace StockManagement.Core.Utilities.Security.Jwt
 {
-    public  class JwtHelper : ITokenHelper
+    public class JwtHelper : ITokenHelper
     {
         /// <summary>
         /// burada tokenOptions değerleri Appsetting.Jsondan alınır.
@@ -22,7 +21,7 @@ namespace StockManagement.Core.Utilities.Security.Jwt
         private readonly TokenOptions _tokenOptions;
         private DateTime _accessTokenExpiration;
 
-        public JwtHelper( IConfiguration configuration)
+        public JwtHelper(IConfiguration configuration)
         {
             Configuration = configuration;
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();

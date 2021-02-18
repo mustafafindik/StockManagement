@@ -5,7 +5,7 @@ using StockManagement.Entities.Concrete;
 
 namespace StockManagement.DataAccess.Concrete.EntityFramework
 {
-    public class StockTypeRepository : EntityRepository<StockType,ApplicationDbContext>, IStockTypeRepository
+    public class StockTypeRepository : EntityRepository<StockType, ApplicationDbContext>, IStockTypeRepository
     {
         public StockTypeRepository(ApplicationDbContext context) : base(context)
         {

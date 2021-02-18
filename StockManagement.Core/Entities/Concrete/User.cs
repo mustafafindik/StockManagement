@@ -2,7 +2,7 @@
 
 namespace StockManagement.Core.Entities.Concrete
 {
-    public class User:IEntity
+    public class User : IEntity
     {
         public User()
         {

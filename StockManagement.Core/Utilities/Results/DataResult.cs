@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StockManagement.Core.Utilities.Results
+﻿namespace StockManagement.Core.Utilities.Results
 {
     /// <summary>
     ///  DataResult Aynı zamanda bir Result olduğu için Miras alıyor ve Ordaki Issuccess ve mesajı alıyor
@@ -10,7 +6,7 @@ namespace StockManagement.Core.Utilities.Results
     ///  IDataResult implement edip onun içindeki  imzaların impkement ediyoruz.
     /// </summary>
     /// <typeparam name="T">Buradaki T Generic tründe</typeparam>
-    public class DataResult<T>: Result ,IDataResult<T>
+    public class DataResult<T> : Result, IDataResult<T>
     {
         public DataResult(T data, bool isSuccess, string message) : base(isSuccess, message)
         {

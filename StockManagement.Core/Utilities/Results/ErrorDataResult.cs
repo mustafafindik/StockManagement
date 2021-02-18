@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StockManagement.Core.Utilities.Results
+﻿namespace StockManagement.Core.Utilities.Results
 {
-    public class ErrorDataResult<T>:DataResult<T>
+    public class ErrorDataResult<T> : DataResult<T>
     {
         public ErrorDataResult(T data, string message) : base(data, false, message)
         {

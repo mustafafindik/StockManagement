@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using StockManagement.Business.Abstract;
+﻿using StockManagement.Business.Abstract;
+using StockManagement.Business.ValidationRules.FluentValidation;
+using StockManagement.Core.Aspects.Autofac.Validation;
 using StockManagement.Core.Utilities.Results;
 using StockManagement.DataAccess.Abstract;
-using StockManagement.DataAccess.Concrete.EntityFramework;
 using StockManagement.Entities.Concrete;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StockManagement.Business.Concrete
 {
@@ -14,7 +13,7 @@ namespace StockManagement.Business.Concrete
     /// Buradaki Sonuçlar IResult Sınıfından iplement Edilmiş Sonuçları döner.
     /// Eğer içinde data varsa IDataResult , yoksa IResult
     /// </summary>
-    public class CityService:ICityService
+    public class CityService : ICityService
     {
         private readonly ICityRepository _cityRepository;
 
@@ -23,14 +22,15 @@ namespace StockManagement.Business.Concrete
             _cityRepository = cityRepository;
         }
 
-   
+
         public IDataResult<City> GetById(int cityId)
         {
             var query = _cityRepository.Get(p => p.Id == cityId);
-            return new SuccessDataResult<City>(query,"Şehir Başarıyla Alındı");
+            return new SuccessDataResult<City>(query, "Şehir Başarıyla Alındı");
 
         }
 
+        [ValidationAspect(typeof(CityValidator), Priority = 1)]
         public IResult Add(City city)
         {
             _cityRepository.Add(city);
@@ -51,8 +51,8 @@ namespace StockManagement.Business.Concrete
 
         IDataResult<List<City>> ICityService.GetAll()
         {
-            var query =  _cityRepository.GetAll().ToList();
-            return new SuccessDataResult<List<City>>(query,"Şehirler Başarıyla Alındı.");
+            var query = _cityRepository.GetAll().ToList();
+            return new SuccessDataResult<List<City>>(query, "Şehirler Başarıyla Alındı.");
         }
     }
 }

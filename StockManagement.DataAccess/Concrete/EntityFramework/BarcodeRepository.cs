@@ -6,7 +6,7 @@ using StockManagement.Entities.Concrete;
 
 namespace StockManagement.DataAccess.Concrete.EntityFramework
 {
-    public class BarcodeRepository : EntityRepository<Barcode,ApplicationDbContext>, IBarcodeRepository
+    public class BarcodeRepository : EntityRepository<Barcode, ApplicationDbContext>, IBarcodeRepository
     {
         public BarcodeRepository(ApplicationDbContext context) : base(context)
         {

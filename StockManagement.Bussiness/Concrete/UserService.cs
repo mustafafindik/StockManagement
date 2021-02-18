@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using StockManagement.Business.Abstract;
+﻿using StockManagement.Business.Abstract;
 using StockManagement.Core.Entities.Concrete;
 using StockManagement.DataAccess.Abstract;
+using System.Collections.Generic;
 
 namespace StockManagement.Business.Concrete
 {
     /// <summary>
     /// Kullanıcı ile ilgili Verileri Çekmek İçin user iş Sınıfı
     /// </summary>
-    public class UserService:IUserService
+    public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
 

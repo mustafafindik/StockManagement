@@ -1,7 +1,5 @@
-﻿using System;
+﻿using StockManagement.Core.Entities.Concrete;
 using System.Collections.Generic;
-using System.Text;
-using StockManagement.Core.Entities.Concrete;
 
 namespace StockManagement.Core.Utilities.Security.Jwt
 {
