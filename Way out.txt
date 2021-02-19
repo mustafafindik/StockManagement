@@ -213,8 +213,12 @@ Gelen Hatayý ve StatusKodu ErrorDetails Sýnýndan nesne üretip içine ekleriz. Bun
 UseMiddleware ile yazdýðýmýz Middleware kullanýrýz.
 app.ConfigureCustomExceptionMiddleware();
 
-68.
+68. Business katmanýnda belirli Sýnýfa ait iþ kurallarýný Sürekli yazmak yerine Bussiness Logic kullanýlýr.
+Bunun için Core Katmanýnda Utilities altýna Business klasörü açýlýr ve Ýçine BusinessRules Sýnýfý Eklenir.
+Ýçine Parametre olarak IResult dönen params alabilir.
+Cevaba göre business katmanýndaki metodda iþ kuralý sonucu döndürürlür.
 
+69
 
 
                 

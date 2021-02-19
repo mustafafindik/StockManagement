@@ -12,6 +12,7 @@ using StockManagement.Core.Aspects.Autofac.Logging;
 using StockManagement.Core.Aspects.Autofac.Security;
 using StockManagement.Core.Aspects.Autofac.Transaction;
 using StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
+using StockManagement.Core.Utilities.Business;
 
 namespace StockManagement.Business.Concrete
 {
@@ -43,9 +44,19 @@ namespace StockManagement.Business.Concrete
         [CacheRemoveAspect("ICityService.Get")] //Yeni veri eklendiği için ICityService.Get Metodlarındalari cacheleri temizler
         public IResult Add(City city)
         {
+            //İş Kuralları BuniessRun ile beraber bağrıllırç
+            IResult result = BusinessRules.Run(CityNameExist(city.CityName)); //IResult Dönen Bussiness İşleri verilebilir.İstediğiniz kadar iş verebilriiz.
+            if (result != null)
+            {
+                return result;
+            }
+
+
             _cityRepository.Add(city);
             return new SuccessResult("Şehir Başarıyla Eklendi.");
         }
+
+ 
 
         [TransactionScopeAspect] //Silme İşleminde Hata Olursa Geri alır Db ye Kayıt etmez
         [CacheRemoveAspect("ICityService.Get")] // veri Silindiğnde için ICityService.Get Metodlarındalari cacheleri temizler
@@ -75,6 +86,20 @@ namespace StockManagement.Business.Concrete
         }
 
 
+        #region BussinesRules
+        private IResult CityNameExist(string cityName)
+        {
 
+            var result = _cityRepository.Get(p => p.CityName == cityName) != null;
+            if (result)
+            {
+                return new ErrorResult("Zaten Şehir Ekli");
+            }
+
+            return new SuccessResult();
+        }
+
+
+        #endregion
     }
 }
