@@ -43,7 +43,7 @@ namespace StockManagement.Core.Aspects.Autofac.Security
                     return;
                 }
             }
-            throw new Exception("Yetkiniz Yok");
+            throw new System.Exception("Yetkiniz Yok");
         }
     }
 }

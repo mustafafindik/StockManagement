@@ -7,6 +7,7 @@ using StockManagement.Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
 using StockManagement.Core.Aspects.Autofac.Caching;
+using StockManagement.Core.Aspects.Autofac.Exception;
 using StockManagement.Core.Aspects.Autofac.Logging;
 using StockManagement.Core.Aspects.Autofac.Security;
 using StockManagement.Core.Aspects.Autofac.Transaction;
@@ -63,6 +64,7 @@ namespace StockManagement.Business.Concrete
             return new SuccessResult("Şehir Başarıyla Güncellendi.");
         }
 
+       
         [CacheAspect]
         [SecuredOperation("Cities.Get",Priority = 1)] //Bu Yetkiye sahip Kullanıcılar Erişebilir.
         [LogAspect(typeof(MsSqlLogger))]

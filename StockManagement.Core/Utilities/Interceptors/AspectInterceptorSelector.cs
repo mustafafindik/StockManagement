@@ -2,6 +2,8 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using StockManagement.Core.Aspects.Autofac.Exception;
+using StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 
 namespace StockManagement.Core.Utilities.Interceptors
 {
@@ -20,6 +22,10 @@ namespace StockManagement.Core.Utilities.Interceptors
             var classAttributes = type.GetCustomAttributes<MethodInterceptionBaseAttribute>(true).ToList();
             var methodAttributes = type.GetMethod(method.Name)!.GetCustomAttributes<MethodInterceptionBaseAttribute>(true);
             classAttributes.AddRange(methodAttributes);
+
+            // Burada Çagrıldığı gibi (tüm Metodlarda, Bussiness metodları üstünde belirli Metodlardada bağrılabilir.
+            classAttributes.Add(new ExceptionLogAspect(typeof(FileLogger)));
+            classAttributes.Add(new ExceptionLogAspect(typeof(MsSqlLogger)));
 
             //Çalışma sırası Priority e göre
             return classAttributes.OrderBy(x => x.Priority).ToArray();

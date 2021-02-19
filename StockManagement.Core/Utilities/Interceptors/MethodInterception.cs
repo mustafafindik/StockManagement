@@ -30,7 +30,7 @@ namespace StockManagement.Core.Utilities.Interceptors
             catch (Exception e)
             {
                 isSuccess = false; // İşlem hata aldı.
-                OnException(invocation, e);
+                OnException(invocation, e); // Bu ExceptionAspect e mesajın gitmesi için e gönderilir.
                 throw;
             }
             finally

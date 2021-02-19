@@ -1,2 +1,3 @@
 2021-02-19 12:38:48.699 +03:00 [Information] {"FullName":"StockManagement.Business.Abstract.ICityService","MethodName":"GetAll","User":"?","Parameters":[]}
 2021-02-19 12:40:18.678 +03:00 [Information] {"FullName":"StockManagement.Business.Abstract.ICityService","MethodName":"GetAll","User":"Mustafa Fındık","Parameters":[]}
+2021-02-19 14:27:22.607 +03:00 [Error] {"ExceptionMessage":"Cannot open database \"StockManagement-DBx\" requested by the login. The login failed.\r\nLogin failed for user 'DESKTOP-36PRR1J\\xD'.","FullName":"StockManagement.Business.Abstract.ICityService","MethodName":"GetAll","User":"?","Parameters":[]}

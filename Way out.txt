@@ -196,5 +196,15 @@ Ancak Bu Seferde MemoryCacheService altýndaki RemoveByPattern Hata Verdiði için 
 64. Daha sonra  [LogAspect(typeof(MsSqlLogger))] , yada  [LogAspect(typeof(FileLogger))] olarak Çagrýlabilir.
 Veritabaný ve Dosya Yolu için AppstteingJson.da gerekli ayarlarý yaapbilirsiniz.
 
-65.
+65. ExceitonAspect Ýçin Core Katanýnda Aspects =>Autofac içine Expention Klasörü açýlýr. ve Ýçine ExceptionLogAspect Eklenir.
+Bu Alýnan Exceptionlarý Veritanýnda Yada Filede loglamak için Kullanýlýr.
+Sadece Belirli Metodlarda Kullanacaksak => Bussiness Ýçine Metodun Üstüne  [ExceptionLogAspect(typeof(MsSqlLogger))] yada  [ExceptionLogAspect(typeof(FileLogger))]
+Ancak tüm Metodlarda Kullanmak istiyorsak ;
+MethodInterception içine Intercept metodunda tryCatch içine alýnan hata OnException(invocation, e); Kýsmýna gönderilir.
+ve AspectInterceptorSelector e Þu kýsýmlar eklenir.
+classAttributes.Add(new ExceptionLogAspect(typeof(FileLogger))); => File 
+classAttributes.Add(new ExceptionLogAspect(typeof(MsSqlLogger))); => MsSql
+
+ 66.
+
                 
