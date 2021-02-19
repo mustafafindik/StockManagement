@@ -4,7 +4,7 @@
 ### Techs
 - .Net5
 - N-Tiers Degisn
-- AOP - AutoFac  [cache,transaction,validation..]
+- AOP - AutoFac  [Cache,Transaction,Validation,Logging,Exception,Performance..]
 - Swagger
 -	AutoMapper
 - Fluent Validation
