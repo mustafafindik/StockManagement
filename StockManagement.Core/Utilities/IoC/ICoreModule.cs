@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace StockManagement.Core.Utilities.IoC
@@ -10,6 +11,6 @@ namespace StockManagement.Core.Utilities.IoC
     /// </summary>
     public interface ICoreModule
     {
-        void Load(IServiceCollection services);
+        void Load(IServiceCollection services, IConfiguration configuration);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StockManagement.Core.CrossCuttingConcerns.Caching;
 using StockManagement.Core.CrossCuttingConcerns.Caching.Microsoft;
@@ -15,7 +16,7 @@ namespace StockManagement.Core.DependencyResolvers
     /// </summary>
     public class CoreModule : ICoreModule
     {
-        public void Load(IServiceCollection services)
+        public void Load(IServiceCollection services, IConfiguration configuration)
         {
             services.AddMemoryCache();
             services.AddSingleton<ICacheService, MemoryCacheService>();
