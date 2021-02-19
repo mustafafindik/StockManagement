@@ -5,6 +5,9 @@ using Serilog;
 
 namespace StockManagement.Core.CrossCuttingConcerns.Logging.Serilog
 {
+    /// <summary>
+    /// Base Olarak Kullanılan Sınıf Bu FileLogger, MsSqlLogger..
+    /// </summary>
     public abstract class LoggerServiceBase
     {
         public ILogger Logger;

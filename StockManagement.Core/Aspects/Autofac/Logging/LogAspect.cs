@@ -26,12 +26,22 @@ namespace StockManagement.Core.Aspects.Autofac.Logging
             _loggerServiceBase = (LoggerServiceBase)Activator.CreateInstance(loggerService);
             _httpContextAccessor = ServiceHelper.ServiceProvider.GetService<IHttpContextAccessor>();
         }
+
+        /// <summary>
+        /// Loglama İşlemden önce yapılır. Info
+        /// </summary>
+        /// <param name="invocation"></param>
         protected override void OnBefore(IInvocation invocation)
         {
 
             _loggerServiceBase?.Info(GetLogDetail(invocation));
         }
 
+        /// <summary>
+        /// Burada Gerekli Mesaj oluşturulur.
+        /// </summary>
+        /// <param name="invocation"></param>
+        /// <returns></returns>
         private string GetLogDetail(IInvocation invocation)
         {
             var logParameters = new List<LogParameter>();

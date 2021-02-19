@@ -12,6 +12,12 @@ namespace StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Loggers
 {
     public class FileLogger : LoggerServiceBase
     {
+        /// <summary>
+        /// configuration =  Appsetting.json a ulaşmak için gerekli Servis
+        /// logConfig = Apsetting.jsondan çekilen Fİlelog için gerekli ayarlalar
+        /// logFilePath = Log Dosyasının kaydedileceği yol
+        /// LoggerConfiguration =  Gerekli File Ayarları.
+        /// </summary>
         public FileLogger()
         {
             var configuration = ServiceHelper.ServiceProvider.GetService<IConfiguration>();

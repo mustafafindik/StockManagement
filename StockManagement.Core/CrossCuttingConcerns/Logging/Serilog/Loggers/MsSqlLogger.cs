@@ -9,8 +9,13 @@ using StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Configuration;
 using StockManagement.Core.Utilities.IoC;
 
 namespace StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Loggers
-{
-	public class MsSqlLogger : LoggerServiceBase
+{  /// <summary>
+   /// configuration =  Appsetting.json a ulaşmak için gerekli Servis
+   /// logConfig = Apsetting.jsondan çekilen Veritabanı Log için gerekli ayarlalar
+   /// sinkOpts = Veritanında log yapılacak tablonun adı ve Otomatik oluşup oluşmayacağı
+   /// seriLogConfig = Veritanında log  Gerekli Serliog ayaları  Ayarları.
+   /// </summary>
+    public class MsSqlLogger : LoggerServiceBase
     {
         public MsSqlLogger()
         {
