@@ -170,5 +170,11 @@ bunu eklemek için aspnetcore.http paketi yüklenir.(Core ve Bussiness Katmanýna).
  [SecuredOperation("Cities.Get",Priority = 1)]
 
 
-57.
+57. Core katmanýnda Aspects => Autofac altýna Performance Klasörü açýlýr ve Ýçine PerformanceAspect Sýnýfý Eklenir.
+Ýçinde Kullanýlan Stopwatch CoreModule Register Edilir.
+
+58. Daha Sonra Bussiness Katmanýnda Gerekli Metodlarda Çagrýlýr.
+ [PerformanceAspect(x)] ) => x Operasyon Süresi x den büyük olduðu zaman Çalýþ.
+
+ 59.
                 

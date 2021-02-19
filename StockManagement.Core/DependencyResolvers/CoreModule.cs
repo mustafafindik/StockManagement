@@ -21,6 +21,7 @@ namespace StockManagement.Core.DependencyResolvers
             services.AddSingleton<ICacheService, MemoryCacheService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<Stopwatch>();
+
         }
     }
 }
