@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StockManagement.Business.Abstract;
+using StockManagement.Core.Extensions;
 using StockManagement.Entities.Concrete;
 
 namespace StockManagement.WepApi.Controllers
@@ -20,9 +22,10 @@ namespace StockManagement.WepApi.Controllers
         /// </summary>
         /// <returns> İçinde Data Listesi Olan Bir IDataResult Döner</returns>
         [HttpGet]
-        // [Authorize(Roles = "Cities.Get")]
         public IActionResult Get()
         {
+            var ddd = User.ClaimId();
+
             var result = _cityService.GetAll();
             if (result.IsSuccess)
             {

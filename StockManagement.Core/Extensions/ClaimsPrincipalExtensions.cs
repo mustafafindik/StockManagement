@@ -8,7 +8,14 @@ namespace StockManagement.Core.Extensions
     {
         /// <summary>
         /// ClaimsPrincipal Sınıfını extend Ediyoruz.
-        /// Yani Genişletme (extra Metodlar).  
+        /// Yani Genişletme (extra Metodlar).
+        ///
+        /// claimsPrincipal = extend edilen Metodlar.
+        ///  claimType a göre filtreleme yapıyoruz.
+        ///
+        /// result =  gelen claimtype göre bul ve değerlerini liste olarak döndür.
+        ///
+        /// 
         /// </summary>
         private static List<string> Claims(this ClaimsPrincipal claimsPrincipal, string claimType)
         {
@@ -16,9 +23,25 @@ namespace StockManagement.Core.Extensions
             return result;
         }
 
+
+
+        /// <summary>
+        ///  ClaimsPrincipal içindeki Rolleri alıyorz. ve üstteki Medod aracılığı ile bize kullanıcın rolleri döner.
+        /// ClaimsPrincipal.ClaimRoles ile roller döner.
+        ///
+        ///  Bu Genişletme başka özellikler içinde yazılabilr.
+        /// </summary>
+        /// <param name="claimsPrincipal">ClaimsPrincipal s</param>
+        /// <returns></returns>
         public static List<string> ClaimRoles(this ClaimsPrincipal claimsPrincipal)
         {
             return claimsPrincipal?.Claims(ClaimTypes.Role);
+        }
+
+        public static string ClaimId(this ClaimsPrincipal claimsPrincipal)
+        {
+            var result = claimsPrincipal?.FindAll(ClaimTypes.NameIdentifier)?.Select(x => x.Value).FirstOrDefault();
+            return result;
         }
     }
 }

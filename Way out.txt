@@ -79,7 +79,7 @@ jWt Altýna AccessToken ve ITokenHelper Sýnýflarý Eklenir.
 JwtHelper ise Token Oluþturmak için
 
 26.JwtTokenHelper yazarken Token içine Belli kullanucu bilgileri ve Roller eklemesi gerekmektedir. Bunun için 
-Core Katmanýna Extentions klasörü açýlýr ve  ClaimExtensions , ClaimsPrincipalExtensions ile ClaimPrinciple ve Claim Listesi Extend Edilir.
+Core Katmanýna Extentions klasörü açýlýr ve  ClaimExtensions , Claim Listesi Extend Edilir.
 
 27.JwtTokenHelper yazarken Belirli Enciprion iþlemeri olacagý için Core,Utilities,Security altýna Encription klasörü açýlýr ve 
 SecurityKeyHelper , SigningCredentialsHelper Sýnýflarý yazýlýr. Bunlar SymmetricSecurityKey, ve SigningCredentials döner.
@@ -159,4 +159,16 @@ Buradakli Load Metoduna gerekli Servicesler eklenir. Örneðin
 
 52.Daha Sonra Eklenen CacheAspect Test edilir.
 
+53. Core Katmanunda Extensions altýna ClaimsPrincipalExtensions ile ClaimPrinciple extend edlilir.
+
+54. Bussiness ve Diðer Katmanlarda User (ClaimsPrincipal) eriþmek için httpcontextAccessor CoreMudule Servis olarak eklenir.
+bunu eklemek için aspnetcore.http paketi yüklenir.(Core ve Bussiness Katmanýna).
+
+55. Daha Sonra Core Katmanýnda  Aspect Altýna Security Klasörüne SecuredOperation Sýnýfý Açýlýr.
+
+56.SecuredOperation Role Adý ile birlikte Bussiness Metodlarýnda Çagrýlýr.
+ [SecuredOperation("Cities.Get",Priority = 1)]
+
+
+57.
                 

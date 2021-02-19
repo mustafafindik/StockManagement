@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using StockManagement.Core.CrossCuttingConcerns.Caching;
 using StockManagement.Core.CrossCuttingConcerns.Caching.Microsoft;
@@ -18,6 +19,7 @@ namespace StockManagement.Core.DependencyResolvers
         {
             services.AddMemoryCache();
             services.AddSingleton<ICacheService, MemoryCacheService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<Stopwatch>();
         }
     }

@@ -7,6 +7,7 @@ using StockManagement.Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
 using StockManagement.Core.Aspects.Autofac.Caching;
+using StockManagement.Core.Aspects.Autofac.Security;
 using StockManagement.Core.Aspects.Autofac.Transaction;
 
 namespace StockManagement.Business.Concrete
@@ -61,6 +62,7 @@ namespace StockManagement.Business.Concrete
         }
 
         [CacheAspect]
+        [SecuredOperation("Cities.Get",Priority = 1)] //Bu Yetkiye sahip Kullanıcılar Erişebilir.
         public IDataResult<List<City>> GetAll()
         {
             var query = _cityRepository.GetAll().ToList();
