@@ -205,6 +205,16 @@ ve AspectInterceptorSelector e Þu kýsýmlar eklenir.
 classAttributes.Add(new ExceptionLogAspect(typeof(FileLogger))); => File 
 classAttributes.Add(new ExceptionLogAspect(typeof(MsSqlLogger))); => MsSql
 
- 66.
+ 66. Kullanýcýya gösterilen Hata Mesajlarýný Belirli standarta oturmak için 
+ Core Katmanýnda Extensions altýna ExceptionMiddleware eklenir. Bu Middleware Middleware Sýrasýnda bir hata olursa Bunu handle etmek için kullalýnýr.
+Gelen Hatayý ve StatusKodu ErrorDetails Sýnýndan nesne üretip içine ekleriz. Bunu Ýçin Validation, Authorization ve Application Hatalarý ayrýlýr ve Diðer hatalar için Default Hata gönderilir.
+
+67. Bunu StartUp içine Eklemek içn ExceptionMiddlewareExtensions yazýlur ve IApplicationBuilder extend eder.
+UseMiddleware ile yazdýðýmýz Middleware kullanýrýz.
+app.ConfigureCustomExceptionMiddleware();
+
+68.
+
+
 
                 

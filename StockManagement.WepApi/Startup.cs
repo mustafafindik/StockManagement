@@ -80,6 +80,8 @@ namespace StockManagement.WepApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "StockManagement.WepApi v1"));
             }
 
+            app.ConfigureCustomExceptionMiddleware();
+
             //Cors AppsttingJson'dan al
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader());
 

@@ -24,7 +24,7 @@ namespace StockManagement.WepApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-           //  var userıd = User.ClaimId();
+          
 
             var result = _cityService.GetAll();
             if (result.IsSuccess)
