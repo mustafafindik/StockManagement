@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 
@@ -38,10 +39,11 @@ namespace StockManagement.Core.Extensions
             return claimsPrincipal?.Claims(ClaimTypes.Role);
         }
 
-        public static string ClaimId(this ClaimsPrincipal claimsPrincipal)
+        public static int ClaimId(this ClaimsPrincipal claimsPrincipal)
         {
             var result = claimsPrincipal?.FindAll(ClaimTypes.NameIdentifier)?.Select(x => x.Value).FirstOrDefault();
-            return result;
+            return Int32.Parse(result!);
         }
+
     }
 }
