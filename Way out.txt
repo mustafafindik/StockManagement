@@ -176,5 +176,25 @@ bunu eklemek için aspnetcore.http paketi yüklenir.(Core ve Bussiness Katmanýna).
 58. Daha Sonra Bussiness Katmanýnda Gerekli Metodlarda Çagrýlýr.
  [PerformanceAspect(x)] ) => x Operasyon Süresi x den büyük olduðu zaman Çalýþ.
 
- 59.
+59. Ýlk Olarak Serilog Kullanmak için Core Katmanýna Serilog , Serilog.Sinks.Http , Serilog.Sinks.MSSqlServer Paketleri Kurulur.
+Core Katmanýnda CrossCuttingConcerns altýna Logging Klasörü Açýlýr. Altýna da Serilog Klasörü (ilerde baþka Paket Kullanabiliriz..)
+
+60. Serilog içine configirasyonlarý tutmak için Configuration Klasörü açýlýr ve Ýçine FileLogConfiguration , MsSqlConfiguration
+Sýnýflarý açýlýr. Bunlar Apsetting.Jsondan gerekli Baglantý ve Path bilgilerini çekmek için kullancaðýz.
+
+61. Serilog Altýna Loggers diye bir Klasör açýlýr ve Ýçine FileLogger, MsSqlLogger SInýflarý eklenir. Burada Gerekli Tanýmlamalar yaplýlýr.
+Serlog altýna LoggerServiceBase Eklenir.
+Bu Sýnýflarda IConfiguration Kullandýðýmýz için StartUp AddDependencyResolvers Kýsmýna Configuration da gönderilir.
+Sýralyla ServiceCollectionExtensions ,  ICoreModule,CoreModule bu parametreye göre Eklememe Yapýlýr.
+
+62. Daha Sonra Serilog Altýna LogDetail,LogDetailWithExeption,LogParametter tablolarý eklenir.
+
+63.Core Katmanýnda Aspecet=>Autofac=>Logging altýna LogAspect Sýnýfý Eklenir.
+Burada LogAspecet Çagrýldýðýnda Newtonsoft.Json Hatasý verdiði için Core Katmanýna Newtonsoft.Json Son Sürümü yüklenir.
+Ancak Bu Seferde MemoryCacheService altýndaki RemoveByPattern Hata Verdiði için System.Dynamic.Runtime , Microsoft.CSharp Paketleri de yüklenmelidir.
+
+64. Daha sonra  [LogAspect(typeof(MsSqlLogger))] , yada  [LogAspect(typeof(FileLogger))] olarak Çagrýlabilir.
+Veritabaný ve Dosya Yolu için AppstteingJson.da gerekli ayarlarý yaapbilirsiniz.
+
+65.
                 
