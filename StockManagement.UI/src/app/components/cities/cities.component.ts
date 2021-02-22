@@ -68,10 +68,8 @@ export class CitiesComponent  implements OnInit{
     
   
     applyFilter(event: Event) {
-      const filterValue = (event.target as HTMLInputElement).value;
-     
+      const filterValue = (event.target as HTMLInputElement).value;    
       this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
-  
       if (this.dataSource.paginator) {
         this.dataSource.paginator.firstPage();
       }
@@ -83,7 +81,6 @@ export class CitiesComponent  implements OnInit{
         this.cityService.getCityById(obj.id).subscribe(data => {
           this.openDialog(action,data);
         });
-
       } else {
           this.openDialog(action,obj);
       }  

@@ -87,7 +87,7 @@ namespace StockManagement.Business.Concrete
 
 
         [CacheAspect]
-        [SecuredOperation("Cities.Get", Priority = 1)] //Bu Yetkiye sahip Kullanıcılar Erişebilir.
+        //[SecuredOperation("Cities.Get", Priority = 1)] //Bu Yetkiye sahip Kullanıcılar Erişebilir.
         [LogAspect(typeof(MsSqlLogger))]
         public IDataResult<List<CityDto>> GetAll()
         {

@@ -14,7 +14,7 @@ export class CityService {
   constructor(private httpClient: HttpClient) { }
   path = Settings.ApiBaseUrl;
   getCities(): Observable<CityListModel[]> {
-    return this.httpClient.get<CityListModel[]>(this.path + "cities/getcities");
+    return this.httpClient.get<CityListModel[]>(this.path + "cities");
   }
 
   getCityById(cityId: number): Observable<CityDetailModel> {

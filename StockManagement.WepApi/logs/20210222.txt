@@ -3,3 +3,4 @@
 2021-02-22 11:38:18.895 +03:00 [Error] {"ExceptionMessage":"Yetkiniz Yok","FullName":"StockManagement.Business.Abstract.ICityService","MethodName":"GetAll","User":"?","Parameters":[]}
 2021-02-22 11:39:09.015 +03:00 [Error] {"ExceptionMessage":"Yetkiniz Yok","FullName":"StockManagement.Business.Abstract.ICityService","MethodName":"GetAll","User":"?","Parameters":[]}
 2021-02-22 14:00:28.924 +03:00 [Error] {"ExceptionMessage":"Yetkiniz Yok","FullName":"StockManagement.Business.Abstract.ICityService","MethodName":"GetAll","User":"?","Parameters":[]}
+2021-02-22 15:04:38.353 +03:00 [Error] {"ExceptionMessage":"Yetkiniz Yok","FullName":"StockManagement.Business.Abstract.ICityService","MethodName":"GetAll","User":"?","Parameters":[]}
