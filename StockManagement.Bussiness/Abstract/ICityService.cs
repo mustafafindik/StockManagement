@@ -15,6 +15,6 @@ namespace StockManagement.Business.Abstract
         IDataResult<City> GetById(int cityId);
         IResult Add(City city);
         IResult Delete(City city);
-        IResult Update(City city);
+        IResult Update(CityDto cityDto);
     }
 }

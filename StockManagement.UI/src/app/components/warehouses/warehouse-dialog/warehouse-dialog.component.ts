@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CityDetailModel } from 'src/app/models/City/CityDetailModel';
-import { CityListModel } from 'src/app/models/City/CityListModel';
+import { City } from 'src/app/models/City/City';
+ 
 import { WarehouseListModel } from 'src/app/models/Warehouse/WarehouseListModel';
 import { CityService } from 'src/app/services/city.service';
 
@@ -16,7 +16,7 @@ export class WarehouseDialogComponent  {
   action:string;
   local_data:any;
   warehouseAddForm: FormGroup;
-  citySelectList : CityListModel[];
+  citySelectList : City[];
   selectedOption = '1';
   
   constructor(

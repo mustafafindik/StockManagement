@@ -20,15 +20,6 @@ namespace StockManagement.DataAccess.Concrete.EntityFramework.Contexts
         }
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                base.OnConfiguring(optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnectionString"), b => b.MigrationsAssembly("StockManagement.WepApi")));
-            }
-        }
-
-
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<VatRate> VatRates { get; set; }

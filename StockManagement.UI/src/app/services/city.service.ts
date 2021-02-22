@@ -3,8 +3,7 @@ import { Settings } from '../helpers/Settings';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { City } from '../models/City/City';
-import { CityListModel } from '../models/City/CityListModel';
-import { CityDetailModel } from '../models/City/CityDetailModel';
+ 
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +12,12 @@ export class CityService {
 
   constructor(private httpClient: HttpClient) { }
   path = Settings.ApiBaseUrl;
-  getCities(): Observable<CityListModel[]> {
-    return this.httpClient.get<CityListModel[]>(this.path + "cities");
+  getCities(): Observable<City[]> {
+    return this.httpClient.get<City[]>(this.path + "cities");
   }
 
-  getCityById(cityId: number): Observable<CityDetailModel> {
-    return this.httpClient.get<CityDetailModel>(this.path + "cities/detail/" + cityId);
+  getCityById(cityId: number): Observable<City> {
+    return this.httpClient.get<City>(this.path + "cities/" + cityId);
   }
 
 
@@ -27,11 +26,11 @@ export class CityService {
   }
 
   update(city: City): Observable<any> {
-    return this.httpClient.put(this.path + 'cities/update', city, { observe: 'response' });
+    return this.httpClient.post(this.path + 'cities/update', city, { observe: 'response' });
   }
 
   delete(city: City): Observable<any> {
-    return this.httpClient.delete(this.path + 'cities/delete/' + city["id"], { observe: 'response' });
+    return this.httpClient.post(this.path + 'cities/delete/' + city["id"], { observe: 'response' });
   }
 
   deleteselected(ids: Number[]): Observable<any> {

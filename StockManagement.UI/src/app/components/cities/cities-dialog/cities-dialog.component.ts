@@ -1,10 +1,8 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { City } from 'src/app/models/City/City';
-import {
-  FormGroup,FormControl,Validators, FormBuilder} from "@angular/forms";
-import { CityListModel } from 'src/app/models/City/CityListModel';
-@Component({
+import {FormGroup,FormControl,Validators, FormBuilder} from "@angular/forms";
+ @Component({
   selector: 'app-cities-dialog',
   templateUrl: './cities-dialog.component.html',
   styleUrls: ['./cities-dialog.component.css']
@@ -17,7 +15,7 @@ export class CitiesDialogComponent  {
   constructor(
     public dialogRef: MatDialogRef<CitiesDialogComponent>,
     //@Optional() is used to prevent error if no data is passed
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: CityListModel, private formBuilder: FormBuilder,) {
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: City, private formBuilder: FormBuilder,) {
   
     this.local_data = {...data};
     this.action = this.local_data.action;

@@ -23,7 +23,7 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
         public T Get(Expression<Func<T, bool>> predicate)
         {
 
-            return _context.Set<T>().SingleOrDefault(predicate);
+            return _context.Set<T>().AsNoTracking().SingleOrDefault(predicate);
 
         }
 
@@ -33,14 +33,14 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
 
             var query = _context.Set<T>();
             query = nav.Aggregate(query, (current, n) => (DbSet<T>)current.Include(n));
-            return query.SingleOrDefault(predicate);
+            return query.AsNoTracking().SingleOrDefault(predicate);
 
         }
 
         public IQueryable<T> GetAll(Expression<Func<T, bool>> predicate = null)
         {
 
-            return predicate == null ? _context.Set<T>() : _context.Set<T>().Where(predicate);
+            return predicate == null ? _context.Set<T>().AsNoTracking() : _context.Set<T>().Where(predicate).AsNoTracking();
 
         }
 
@@ -49,7 +49,7 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
 
             var query = _context.Set<T>();
             query = nav.Aggregate(query, (current, n) => (DbSet<T>)current.Include(n));
-            return query;
+            return query.AsNoTracking();
 
         }
 
@@ -58,7 +58,7 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
 
             var query = predicate == null ? _context.Set<T>() : _context.Set<T>().Where(predicate);
             query = nav.Aggregate(query, (current, n) => (DbSet<T>)current.Include(n));
-            return query;
+            return query.AsNoTracking();
 
         }
 
@@ -66,6 +66,7 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
         {
 
             var addedEntityEntry = _context.Entry(entity);
+            addedEntityEntry.State = EntityState.Detached;
             addedEntityEntry.State = EntityState.Added;
             _context.SaveChanges();
 
@@ -75,6 +76,7 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
         {
 
             var deletedEntityEntry = _context.Entry(entity);
+            deletedEntityEntry.State = EntityState.Detached;
             deletedEntityEntry.State = EntityState.Deleted;
             _context.SaveChanges();
 
@@ -83,9 +85,10 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
         public void Update(T entity)
         {
 
-            var modifiedEntityEntry = _context.Entry(entity);
-            modifiedEntityEntry.State = EntityState.Modified;
+
+            _context.Set<T>().Update(entity);
             _context.SaveChanges();
+
 
         }
     }

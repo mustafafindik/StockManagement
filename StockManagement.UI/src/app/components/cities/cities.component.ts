@@ -8,7 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Title } from '@angular/platform-browser';
 import { MyDialogComponent } from 'src/app/extensions/dialog/Mydialog.component';
 import { City } from 'src/app/models/City/City';
-import { CityListModel } from 'src/app/models/City/CityListModel';
+ 
 import { DataDialog } from 'src/app/models/DataDialog';
 import { CityService } from 'src/app/services/city.service';
 import { CitiesDialogComponent } from './cities-dialog/cities-dialog.component';
@@ -22,9 +22,9 @@ export class CitiesComponent  implements OnInit{
  
  
   
-  dataSource = new MatTableDataSource<CityListModel>();
+  dataSource = new MatTableDataSource<City>();
   displayedColumns = ['select', 'id', 'cityName',"actions"];
-  selection = new SelectionModel<CityListModel>(true, []);
+  selection = new SelectionModel<City>(true, []);
 
 
   @ViewChild(MatPaginator ) paginator: MatPaginator;
@@ -39,11 +39,11 @@ export class CitiesComponent  implements OnInit{
 
   LoadData() {
     this.cityService.getCities().subscribe(data => {  
-      this.dataSource = new MatTableDataSource<CityListModel>(data);
+      this.dataSource = new MatTableDataSource<City>(data);
       console.log(data);
       this.dataSource.paginator = this.paginator;    
       setTimeout(() => this.dataSource.sort = this.sort);   
-      this.dataSource.filterPredicate = (data:CityListModel, filterValue: string) => 
+      this.dataSource.filterPredicate = (data:City, filterValue: string) => 
                     data.cityName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1
                     || data.id.toString().toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
       this.selection.clear();

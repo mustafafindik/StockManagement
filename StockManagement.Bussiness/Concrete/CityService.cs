@@ -78,9 +78,11 @@ namespace StockManagement.Business.Concrete
         [ValidationAspect(typeof(CityValidator), Priority = 1)]//Gelen Veriyi Validate eder
         [TransactionScopeAspect]//Güncelleme İşleminde Hata Olursa Geri alır Db ye Kayıt etmez
         [CacheRemoveAspect("ICityService.Get")] // veri Güncelleme için ICityService.Get Metodlarındalari cacheleri temizler
-        public IResult Update(City city)
+        public IResult Update(CityDto cityDto)
         {
-            city = (City)_dateAndUserService.ForUpdate(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
+            
+            var city = _mapper.Map<City>(cityDto);
+            //city = (City)_dateAndUserService.ForUpdate(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
             _cityRepository.Update(city);
             return new SuccessResult("Şehir Başarıyla Güncellendi.");
         }

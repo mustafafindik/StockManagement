@@ -21,11 +21,11 @@ namespace StockManagement.Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<CityService>().As<ICityService>();
-            builder.RegisterType<CityRepository>().As<ICityRepository>();
+            builder.RegisterType<CityService>().As<ICityService>().SingleInstance();
+            builder.RegisterType<CityRepository>().As<ICityRepository>().SingleInstance();
 
-            builder.RegisterType<UserService>().As<IUserService>();
-            builder.RegisterType<UserRepository>().As<IUserRepository>();
+            builder.RegisterType<UserService>().As<IUserService>().SingleInstance();
+            builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
 
             builder.RegisterType<AuthService>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();

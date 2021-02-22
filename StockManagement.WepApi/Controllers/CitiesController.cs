@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StockManagement.Business.Abstract;
 using StockManagement.Entities.Concrete;
+using StockManagement.Entities.Dto;
 
 namespace StockManagement.WepApi.Controllers
 {
@@ -77,9 +78,11 @@ namespace StockManagement.WepApi.Controllers
         /// </summary>
         /// <returns> Dönüş olarak IResult Sınıfından döner.</returns>
         [HttpPost("update")]
-        public IActionResult Update(City city)
+        public IActionResult Update([FromBody]  CityDto cityDto)
         {
-            var result = _cityService.Update(city);
+           
+
+            var result = _cityService.Update(cityDto);
             if (result.IsSuccess)
             {
                 return Ok(result.Message);
