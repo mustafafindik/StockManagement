@@ -3,6 +3,7 @@ using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
 using StockManagement.Business.Abstract;
 using StockManagement.Business.Concrete;
+using StockManagement.Business.Helpers;
 using StockManagement.Core.Utilities.Interceptors;
 using StockManagement.Core.Utilities.Security.Jwt;
 using StockManagement.DataAccess.Abstract;
@@ -26,6 +27,8 @@ namespace StockManagement.Business.DependencyResolvers.Autofac
 
             builder.RegisterType<AuthService>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+            builder.RegisterType<SetDateAndUserService>().As<ISetDateAndUserService>();
 
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

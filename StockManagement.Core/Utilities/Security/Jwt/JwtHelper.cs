@@ -75,10 +75,13 @@ namespace StockManagement.Core.Utilities.Security.Jwt
         /// <returns></returns>
         private IEnumerable<Claim> SetClaims(User user, List<Role> roles)
         {
+            var userName = (string.IsNullOrEmpty(user.FirstName) && string.IsNullOrEmpty(user.LastName))
+                ? user.Email
+                : $"{user.FirstName} {user.LastName}";
             var claims = new List<Claim>();
             claims.AddNameIdentifier(user.Id.ToString());
             claims.AddEmail(user.Email);
-            claims.AddName($"{user.FirstName} {user.LastName}");
+            claims.AddName(userName);
             claims.AddRoles(roles.Select(c => c.Name).ToArray());
 
             return claims;

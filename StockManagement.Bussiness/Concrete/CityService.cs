@@ -12,6 +12,7 @@ using StockManagement.DataAccess.Abstract;
 using StockManagement.Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
+using StockManagement.Business.Helpers;
 
 namespace StockManagement.Business.Concrete
 {
@@ -22,10 +23,12 @@ namespace StockManagement.Business.Concrete
     public class CityService : ICityService
     {
         private readonly ICityRepository _cityRepository;
+        private readonly ISetDateAndUserService _dateAndUserService;
 
-        public CityService(ICityRepository cityRepository)
+        public CityService(ICityRepository cityRepository, ISetDateAndUserService dateAndUserService)
         {
             _cityRepository = cityRepository;
+            _dateAndUserService = dateAndUserService;
         }
 
 
@@ -51,6 +54,8 @@ namespace StockManagement.Business.Concrete
             }
 
 
+            city =(City)_dateAndUserService.ForAdd(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
+
             _cityRepository.Add(city);
             return new SuccessResult("Şehir Başarıyla Eklendi.");
         }
@@ -70,6 +75,7 @@ namespace StockManagement.Business.Concrete
         [CacheRemoveAspect("ICityService.Get")] // veri Güncelleme için ICityService.Get Metodlarındalari cacheleri temizler
         public IResult Update(City city)
         {
+            city = (City)_dateAndUserService.ForUpdate(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
             _cityRepository.Update(city);
             return new SuccessResult("Şehir Başarıyla Güncellendi.");
         }
