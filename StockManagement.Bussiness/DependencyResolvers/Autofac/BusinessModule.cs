@@ -1,5 +1,7 @@
-﻿using Autofac;
+﻿using System.Collections.Generic;
+using Autofac;
 using Autofac.Extras.DynamicProxy;
+using AutoMapper;
 using Castle.DynamicProxy;
 using StockManagement.Business.Abstract;
 using StockManagement.Business.Concrete;
@@ -29,7 +31,16 @@ namespace StockManagement.Business.DependencyResolvers.Autofac
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
             builder.RegisterType<SetDateAndUserService>().As<ISetDateAndUserService>();
+            builder.RegisterType<AutoMapperHelper>().As<Profile>();
+            builder.Register(c => new MapperConfiguration(cfg =>
+            {
+                foreach (var profile in c.Resolve<IEnumerable<Profile>>())
+                {
+                    cfg.AddProfile(profile);
+                }
+            })).AsSelf().SingleInstance();
 
+            builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().InstancePerLifetimeScope();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

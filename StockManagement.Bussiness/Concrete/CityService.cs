@@ -12,7 +12,10 @@ using StockManagement.DataAccess.Abstract;
 using StockManagement.Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using StockManagement.Business.Helpers;
+using StockManagement.Core.Aspects.Autofac.Exception;
+using StockManagement.Entities.Dto;
 
 namespace StockManagement.Business.Concrete
 {
@@ -24,11 +27,13 @@ namespace StockManagement.Business.Concrete
     {
         private readonly ICityRepository _cityRepository;
         private readonly ISetDateAndUserService _dateAndUserService;
+        private readonly IMapper _mapper;
 
-        public CityService(ICityRepository cityRepository, ISetDateAndUserService dateAndUserService)
+        public CityService(ICityRepository cityRepository, ISetDateAndUserService dateAndUserService, IMapper mapper)
         {
             _cityRepository = cityRepository;
             _dateAndUserService = dateAndUserService;
+            _mapper = mapper;
         }
 
 
@@ -84,10 +89,12 @@ namespace StockManagement.Business.Concrete
         [CacheAspect]
         [SecuredOperation("Cities.Get", Priority = 1)] //Bu Yetkiye sahip Kullanıcılar Erişebilir.
         [LogAspect(typeof(MsSqlLogger))]
-        public IDataResult<List<City>> GetAll()
+        [ExceptionLogAspect(typeof(MsSqlLogger))]
+        public IDataResult<List<CityListDto>> GetAll()
         {
             var query = _cityRepository.GetAll().ToList();
-            return new SuccessDataResult<List<City>>(query, "Şehirler Başarıyla Alındı.");
+            var cityListDto = _mapper.Map<List<CityListDto>>(query);
+            return new SuccessDataResult<List<CityListDto>>(cityListDto, "Şehirler Başarıyla Alındı.");
         }
 
 

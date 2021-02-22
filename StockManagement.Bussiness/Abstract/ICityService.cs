@@ -1,6 +1,7 @@
 ﻿using StockManagement.Core.Utilities.Results;
 using StockManagement.Entities.Concrete;
 using System.Collections.Generic;
+using StockManagement.Entities.Dto;
 
 namespace StockManagement.Business.Abstract
 {
@@ -10,7 +11,7 @@ namespace StockManagement.Business.Abstract
     /// </summary>
     public interface ICityService
     {
-        IDataResult<List<City>> GetAll();
+        IDataResult<List<CityListDto>> GetAll();
         IDataResult<City> GetById(int cityId);
         IResult Add(City city);
         IResult Delete(City city);
