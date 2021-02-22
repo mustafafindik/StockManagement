@@ -30,7 +30,7 @@ export class CityService {
   }
 
   delete(city: City): Observable<any> {
-    return this.httpClient.post(this.path + 'cities/delete/' + city["id"], { observe: 'response' });
+    return this.httpClient.post(this.path + 'cities/delete' , city, { observe: 'response' });
   }
 
   deleteselected(ids: Number[]): Observable<any> {

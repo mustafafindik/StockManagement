@@ -19,6 +19,6 @@ namespace StockManagement.Core.DataAccess
         IQueryable<T> GetAll(Expression<Func<T, bool>> predicate = null, params string[] nav);
         void Add(T entity);
         void Delete(T entity);
-        void Update(T entity);
+        void Update(T entity,int id);
     }
 }

@@ -3,6 +3,7 @@ using StockManagement.Core.Entities;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using StockManagement.Core.Entities.Concrete;
 
 namespace StockManagement.Core.DataAccess.EntityFrameworkCore
 {
@@ -66,7 +67,6 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
         {
 
             var addedEntityEntry = _context.Entry(entity);
-            addedEntityEntry.State = EntityState.Detached;
             addedEntityEntry.State = EntityState.Added;
             _context.SaveChanges();
 
@@ -76,17 +76,16 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
         {
 
             var deletedEntityEntry = _context.Entry(entity);
-            deletedEntityEntry.State = EntityState.Detached;
             deletedEntityEntry.State = EntityState.Deleted;
             _context.SaveChanges();
 
         }
 
-        public void Update(T entity)
+        public void Update(T entity, int id)
         {
+            var existingEntity = _context.Set<T>().Find(id);
 
-
-            _context.Set<T>().Update(entity);
+            _context.Entry(existingEntity).CurrentValues.SetValues(entity);
             _context.SaveChanges();
 
 

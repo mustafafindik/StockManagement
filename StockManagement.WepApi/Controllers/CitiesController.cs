@@ -31,7 +31,7 @@ namespace StockManagement.WepApi.Controllers
                 return Ok(result.Data);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(new { Message = result.Message });
 
         }
 
@@ -49,7 +49,7 @@ namespace StockManagement.WepApi.Controllers
                 return Ok(result.Data);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(new { Message = result.Message });
 
         }
 
@@ -67,10 +67,10 @@ namespace StockManagement.WepApi.Controllers
             var result = _cityService.Add(city);
             if (result.IsSuccess)
             {
-                return Ok(result.Message);
+                return Ok(new { Message = result.Message });
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(new { Message = result.Message });
         }
 
         /// <summary>
@@ -85,10 +85,10 @@ namespace StockManagement.WepApi.Controllers
             var result = _cityService.Update(cityDto);
             if (result.IsSuccess)
             {
-                return Ok(result.Message);
+                return Ok(new { Message = result.Message });
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(new { Message = result.Message });
         }
 
 
@@ -103,10 +103,10 @@ namespace StockManagement.WepApi.Controllers
             var result = _cityService.Delete(city);
             if (result.IsSuccess)
             {
-                return Ok(result.Message);
+                return Ok(new { Message = result.Message });
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(new { Message = result.Message });
         }
     }
 }

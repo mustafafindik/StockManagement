@@ -82,8 +82,8 @@ namespace StockManagement.Business.Concrete
         {
             
             var city = _mapper.Map<City>(cityDto);
-            //city = (City)_dateAndUserService.ForUpdate(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
-            _cityRepository.Update(city);
+            city = (City)_dateAndUserService.ForUpdate(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
+            _cityRepository.Update(city,city.Id);
             return new SuccessResult("Şehir Başarıyla Güncellendi.");
         }
 
