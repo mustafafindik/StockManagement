@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Castle.DynamicProxy;
+﻿using Castle.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
 using StockManagement.Core.CrossCuttingConcerns.Caching;
 using StockManagement.Core.Utilities.Interceptors;
 using StockManagement.Core.Utilities.IoC;
+using System.Linq;
 
 namespace StockManagement.Core.Aspects.Autofac.Caching
 {

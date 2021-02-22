@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Transactions;
-using Castle.DynamicProxy;
+﻿using Castle.DynamicProxy;
 using StockManagement.Core.Utilities.Interceptors;
+using System.Transactions;
 
 namespace StockManagement.Core.Aspects.Autofac.Transaction
 {

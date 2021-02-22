@@ -1,0 +1,21 @@
+.kt-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+ 
+    text-align: center;
+    padding-left: 100px;
+}
+
+
+
+@media(max-width: 600px) {
+    .kt-footer{
+      
+        padding-left: 0px;
+    }
+    
+}
+
+

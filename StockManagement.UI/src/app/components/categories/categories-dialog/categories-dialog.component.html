@@ -1,0 +1,40 @@
+<div class="kt-portlet">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title">
+         <strong>{{action}}</strong>
+      </h3>
+    </div>
+  </div>
+  <!--begin::Form-->
+  <div class="kt-form">
+    <div class="kt-portlet__body">   
+      <div mat-dialog-content >
+        <ng-template class="example-container" [ngIf]="action === 'Kategori Ekle' || action==='Kategori Düzenle'">
+        <mat-form-field style="display: block;">
+          <input placeholder="Kategori Adı" type="text" matInput   class="form-control"  [(ngModel)]="local_data.categoryName"   required>
+        </mat-form-field>    
+      </ng-template>
+      <ng-template class="example-container" [ngIf]="action === 'Alt Kategori Ekle'|| action==='Alt Kategori Düzenle'">
+        <mat-form-field style="display: block;">
+          <input placeholder=" Alt Kategori Adı" type="text" matInput   class="form-control"  [(ngModel)]="local_data.categoryName"   required>
+        </mat-form-field>    
+      </ng-template>   
+      <ng-template  [ngIf]="action === 'Kategori Sil'"> 
+        <b>{{local_data.categoryName}}</b> Kategorisini  Silmek İstediğinizden Emin Misiniz ??
+      </ng-template>
+      <ng-template  [ngIf]="action === 'Alt Kategori Sil'"> 
+        <b>{{local_data.categoryName}}</b> Alt Kategorisini  Silmek İstediğinizden Emin Misiniz ??
+      </ng-template>
+      </div>
+    </div>
+    <div class="kt-portlet__foot">
+      <div class="kt-form__actions">
+        <button style="margin-right: 10px;" color="accent" mat-raised-button *ngIf="action !== 'Detaylar'" mat-button (click)="doAction()">{{action}}</button>
+        <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Kapat</button>
+      </div>
+    </div>
+  </div>
+
+  <!--end::Form-->
+</div>

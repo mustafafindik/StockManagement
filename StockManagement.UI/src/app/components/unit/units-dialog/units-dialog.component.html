@@ -1,0 +1,57 @@
+<div class="kt-portlet">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title">
+        Birim <strong>{{action}}</strong>
+      </h3>
+    </div>
+  </div>
+  <!--begin::Form-->
+  <div class="kt-form">
+    <div class="kt-portlet__body">
+      <form  [formGroup]="unitAddForm">
+      <div mat-dialog-content >
+        <ng-template class="example-container" [ngIf]="action === 'Güncelle' || action ==='Ekle'">
+        <mat-form-field style="display: block;">
+          <input placeholder="Birim Adı" type="text" matInput id="unitName" class="form-control"  formControlName="unitName" [(ngModel)]="local_data.unitName"   required>
+          <mat-error *ngIf="unitAddForm.get('unitName').hasError('required')">Birim Alanı Zorunludur</mat-error>
+        </mat-form-field>
+     
+      </ng-template>
+        <ng-template  [ngIf]="action === 'Sil'"> 
+          <b>{{local_data.unitName}}</b> Birimini Silmek İstediğinizden Emin Misiniz ??
+        </ng-template>
+        <ng-template [ngIf]="action === 'Detaylar'">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Id" disabled value="{{local_data.id}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Birim Adı" disabled value="{{local_data.unitName}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Oluşturan" disabled value="{{local_data.createdBy}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Oluşturma Tarihi" disabled value="{{local_data.createDate | date: 'dd/MM/yyyy HH:mm'}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Günceleyen" disabled value="{{local_data.modifiedBy}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Güncelleme Tarihi" disabled value="{{local_data.modifiedDate  | date: 'dd/MM/yyyy HH:mm'}}">
+          </mat-form-field>
+        </ng-template>
+      </div>
+
+    </form>
+    </div>
+    <div class="kt-portlet__foot">
+      <div class="kt-form__actions">
+        <button style="margin-right: 10px;" color="accent" mat-raised-button *ngIf="action !== 'Detaylar'" mat-button (click)="doAction()">{{action}}</button>
+        <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Kapat</button>
+      </div>
+    </div>
+  </div>
+
+  <!--end::Form-->
+</div>

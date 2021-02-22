@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+
+
+.mat-dialog-container {
+    padding: 0px !important;
+  }
+  
+  .kt-portlet {
+   
+       margin-bottom: 0px !important;
+    
+  }
+  
+  .mat-form-field {
+    display: block !important;
+ 
+}
+
+.mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+    color: rgb(22 102 165) !important;
+}

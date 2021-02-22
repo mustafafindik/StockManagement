@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StockManagement.Core.CrossCuttingConcerns.Caching
+﻿namespace StockManagement.Core.CrossCuttingConcerns.Caching
 {
     /// <summary>
     /// Burada Cache ile ilgili metodlar var.

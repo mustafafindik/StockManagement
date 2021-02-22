@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Castle.DynamicProxy;
+﻿using Castle.DynamicProxy;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -9,6 +6,8 @@ using StockManagement.Core.CrossCuttingConcerns.Logging;
 using StockManagement.Core.CrossCuttingConcerns.Logging.Serilog;
 using StockManagement.Core.Utilities.Interceptors;
 using StockManagement.Core.Utilities.IoC;
+using System;
+using System.Collections.Generic;
 
 namespace StockManagement.Core.Aspects.Autofac.Logging
 {

@@ -1,0 +1,42 @@
+
+
+<div class="modal position-relative d-block" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document" style="margin: 0px;;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">   {{data.title}} </h5>
+              <button type="button" class="close"  (click)="onNoClick()" aria-label="Close">
+                  <i aria-hidden="true" class="ki ki-close"></i>
+              </button>
+          </div>
+          <div class="modal-body">
+            <p [innerHTML]="data.desc"></p>  
+
+
+          </div>
+          <div class="modal-footer">
+      
+            <button color="accent" mat-raised-button style="margin-right:10px" (click)="onYesClick()" cdkFocusInitial> {{data.buttonYes}}</button>
+            <button mat-raised-button color="warn"  (click)="onNoClick()">{{data.buttonNo}}</button>  </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+ 

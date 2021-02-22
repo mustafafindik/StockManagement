@@ -1,0 +1,94 @@
+<div class="kt-portlet">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title">
+        Depo <strong>{{action}}</strong>
+      </h3>
+    </div>
+  </div>
+  <!--begin::Form-->
+  <div class="kt-form">
+    <div class="kt-portlet__body">
+      <form  [formGroup]="supplierAddForm">
+      <div mat-dialog-content >
+          
+        <ng-template class="example-container" [ngIf]="action === 'Güncelle' || action ==='Ekle'">
+        <mat-form-field  style="display: block;margin-top:15px;">
+          <input placeholder="Tedarikçi Adı" type="text" matInput class="form-control"  formControlName="supplierName" [(ngModel)]="local_data.supplierName"   required>
+          <mat-error *ngIf="supplierAddForm.get('supplierName').hasError('required') && supplierAddForm.get('supplierName').touched">Tedarikçi Adı Alanı Zorunludur</mat-error>
+        </mat-form-field>
+        <mat-form-field style="display: block;margin-top:15px;">
+          <input placeholder="Vergi No" type="text" matInput  class="form-control"  formControlName="taxId" [(ngModel)]="local_data.taxId"   required>
+          <mat-error *ngIf="supplierAddForm.get('taxId').hasError('minlength') && supplierAddForm.get('taxId').touched"> Minimum 10 karakter olmalıdır.</mat-error>
+          <mat-error *ngIf="supplierAddForm.get('taxId').hasError('required') && supplierAddForm.get('taxId').touched "> Vergi No Alanı Zorunludur</mat-error>
+        </mat-form-field>
+        <mat-form-field  style="display: block;margin-top:15px;">
+          <input placeholder="Vergi Dairesi" type="text" matInput class="form-control"  formControlName="taxOffice" [(ngModel)]="local_data.taxOffice"   required>
+          <mat-error *ngIf="supplierAddForm.get('taxOffice').hasError('required') && supplierAddForm.get('taxOffice').touched">Vergi Dairesi Zorunludur</mat-error>
+        </mat-form-field>
+        <mat-form-field  style="display: block;margin-top:15px;">
+          <input placeholder="Adres" type="text" matInput class="form-control"  formControlName="address" [(ngModel)]="local_data.address">
+        </mat-form-field>
+        <mat-form-field  style="display: block;margin-top:15px;">
+          <input placeholder="Telefon Numarası" type="text" matInput class="form-control"  formControlName="phoneNumber" [(ngModel)]="local_data.phoneNumber">
+        </mat-form-field>
+        <mat-form-field  style="display: block;margin-top:15px;">
+          <input placeholder="Mail Adresi" type="text" matInput class="form-control"  formControlName="email" [(ngModel)]="local_data.email">
+        </mat-form-field>
+      </ng-template>
+      
+      
+      <ng-template  [ngIf]="action === 'Sil'"> 
+          <b>{{local_data.supplierName}}</b> Tedarikçisini Silmek İstediğinizden Emin Misiniz ??
+        </ng-template>
+       
+       
+        <ng-template [ngIf]="action === 'Detaylar'">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Id" disabled value="{{local_data.id}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Tedarikçi Adı" disabled value="{{local_data.supplierName}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Vergi No" disabled value="{{local_data.taxId}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Vergi Dairesi " disabled value="{{local_data.taxOffice}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Adres " disabled value="{{local_data.address}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Telefon Numarası " disabled value="{{local_data.phoneNumber}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Mail Adresi " disabled value="{{local_data.email}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Oluşturan" disabled value="{{local_data.createdBy}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Oluşturma Tarihi" disabled value="{{local_data.createDate | date: 'dd/MM/yyyy HH:mm'}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Günceleyen" disabled value="{{local_data.modifiedBy}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Güncelleme Tarihi" disabled value="{{local_data.modifiedDate  | date: 'dd/MM/yyyy HH:mm'}}">
+          </mat-form-field>
+        </ng-template>
+      </div>
+
+    </form>
+    </div>
+    <div class="kt-portlet__foot">
+      <div class="kt-form__actions">
+        <button  style="margin-right: 10px;" color="accent" mat-raised-button *ngIf="action !== 'Detaylar'" mat-button (click)="doAction()">{{action}}</button>
+        <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Kapat</button>
+      </div>
+    </div>
+  </div>
+
+  <!--end::Form-->
+</div>

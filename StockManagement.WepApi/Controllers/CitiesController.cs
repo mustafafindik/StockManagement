@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using StockManagement.Business.Abstract;
-using StockManagement.Core.Extensions;
 using StockManagement.Entities.Concrete;
 
 namespace StockManagement.WepApi.Controllers
@@ -24,7 +22,7 @@ namespace StockManagement.WepApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-          
+
 
             var result = _cityService.GetAll();
             if (result.IsSuccess)

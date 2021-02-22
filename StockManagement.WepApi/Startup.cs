@@ -59,7 +59,7 @@ namespace StockManagement.WepApi
                 });
 
 
-            services.AddDependencyResolvers(Configuration,new ICoreModule[]
+            services.AddDependencyResolvers(Configuration, new ICoreModule[]
             {
                 new CoreModule(),
             });

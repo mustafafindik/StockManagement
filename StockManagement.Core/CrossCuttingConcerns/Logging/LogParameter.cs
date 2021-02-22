@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StockManagement.Core.CrossCuttingConcerns.Logging
+﻿namespace StockManagement.Core.CrossCuttingConcerns.Logging
 {
-    public  class LogParameter
+    public class LogParameter
     {
         public string Name { get; set; }
         public object Value { get; set; }

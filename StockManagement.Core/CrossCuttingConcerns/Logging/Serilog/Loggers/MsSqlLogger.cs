@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Sinks.MSSqlServer;
 using StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Configuration;
 using StockManagement.Core.Utilities.IoC;
+using System;
 
 namespace StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Loggers
 {  /// <summary>

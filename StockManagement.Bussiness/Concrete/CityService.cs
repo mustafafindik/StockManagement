@@ -1,18 +1,17 @@
 ﻿using StockManagement.Business.Abstract;
 using StockManagement.Business.ValidationRules.FluentValidation;
+using StockManagement.Core.Aspects.Autofac.Caching;
+using StockManagement.Core.Aspects.Autofac.Logging;
+using StockManagement.Core.Aspects.Autofac.Security;
+using StockManagement.Core.Aspects.Autofac.Transaction;
 using StockManagement.Core.Aspects.Autofac.Validation;
+using StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
+using StockManagement.Core.Utilities.Business;
 using StockManagement.Core.Utilities.Results;
 using StockManagement.DataAccess.Abstract;
 using StockManagement.Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
-using StockManagement.Core.Aspects.Autofac.Caching;
-using StockManagement.Core.Aspects.Autofac.Exception;
-using StockManagement.Core.Aspects.Autofac.Logging;
-using StockManagement.Core.Aspects.Autofac.Security;
-using StockManagement.Core.Aspects.Autofac.Transaction;
-using StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
-using StockManagement.Core.Utilities.Business;
 
 namespace StockManagement.Business.Concrete
 {
@@ -29,7 +28,7 @@ namespace StockManagement.Business.Concrete
             _cityRepository = cityRepository;
         }
 
-        
+
         [CacheAspect] ///Verileri Cache alır
         public IDataResult<City> GetById(int cityId)
         {
@@ -38,7 +37,7 @@ namespace StockManagement.Business.Concrete
 
         }
 
-       
+
         [ValidationAspect(typeof(CityValidator), Priority = 1)] //Gelen Veriyi Validate eder
         [TransactionScopeAspect] //Ekleme İşleminde Hata Olursa Geri alır Db ye Kayıt etmez
         [CacheRemoveAspect("ICityService.Get")] //Yeni veri eklendiği için ICityService.Get Metodlarındalari cacheleri temizler
@@ -56,7 +55,7 @@ namespace StockManagement.Business.Concrete
             return new SuccessResult("Şehir Başarıyla Eklendi.");
         }
 
- 
+
 
         [TransactionScopeAspect] //Silme İşleminde Hata Olursa Geri alır Db ye Kayıt etmez
         [CacheRemoveAspect("ICityService.Get")] // veri Silindiğnde için ICityService.Get Metodlarındalari cacheleri temizler
@@ -75,9 +74,9 @@ namespace StockManagement.Business.Concrete
             return new SuccessResult("Şehir Başarıyla Güncellendi.");
         }
 
-       
+
         [CacheAspect]
-        [SecuredOperation("Cities.Get",Priority = 1)] //Bu Yetkiye sahip Kullanıcılar Erişebilir.
+        [SecuredOperation("Cities.Get", Priority = 1)] //Bu Yetkiye sahip Kullanıcılar Erişebilir.
         [LogAspect(typeof(MsSqlLogger))]
         public IDataResult<List<City>> GetAll()
         {

@@ -1,0 +1,68 @@
+
+
+<div class="modal position-relative d-block" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document" style="margin: 0px;;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">  Şehir <strong>{{action}}</strong></h5>
+              <button type="button" class="close"  (click)="closeDialog()" aria-label="Close">
+                  <i aria-hidden="true" class="ki ki-close"></i>
+              </button>
+          </div>
+          <div class="modal-body">
+            <form  [formGroup]="cityAddForm">
+              <div mat-dialog-content >
+                <ng-template class="example-container" [ngIf]="action === 'Güncelle' || action ==='Ekle'">
+                <mat-form-field style="display: block;">
+                  <input placeholder="Şehir Adı" type="text" matInput id="cityName" class="form-control"  formControlName="cityName" [(ngModel)]="local_data.cityName"   required>
+                  <mat-error *ngIf="cityAddForm.get('cityName').hasError('required')">Şehir Alanı Zorunludur</mat-error>
+                </mat-form-field>
+             
+              </ng-template>
+                <ng-template  [ngIf]="action === 'Sil'"> 
+                  <b>{{local_data.cityName}}</b> Şehrini Silmek İstediğinizden Emin Misiniz ??
+                </ng-template>
+                <ng-template [ngIf]="action === 'Detaylar'">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Id" disabled value="{{local_data.id}}">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Şehir Adı" disabled value="{{local_data.cityName}}">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Oluşturan" disabled value="{{local_data.createdBy}}">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Oluşturma Tarihi" disabled value="{{local_data.createDate | date: 'dd/MM/yyyy HH:mm'}}">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Günceleyen" disabled value="{{local_data.modifiedBy}}">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Güncelleme Tarihi" disabled value="{{local_data.modifiedDate  | date: 'dd/MM/yyyy HH:mm'}}">
+                  </mat-form-field>
+                </ng-template>
+              </div>
+        
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button style="margin-right: 5px;" mat-button (click)="closeDialog()" mat-flat-button color="warn" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Vazgeç</button>
+            <button   class="btn btn-primary font-weight-bold" color="accent" mat-raised-button *ngIf="action !== 'Detaylar'" mat-button (click)="doAction()">{{action}}</button>
+      </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 

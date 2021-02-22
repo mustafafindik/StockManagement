@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StockManagement.Core.CrossCuttingConcerns.Caching;
 using StockManagement.Core.CrossCuttingConcerns.Caching.Microsoft;
 using StockManagement.Core.Utilities.IoC;
+using System.Diagnostics;
 
 namespace StockManagement.Core.DependencyResolvers
 {

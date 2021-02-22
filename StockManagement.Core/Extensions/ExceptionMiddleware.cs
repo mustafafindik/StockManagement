@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using System;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace StockManagement.Core.Extensions
 {
@@ -38,14 +35,14 @@ namespace StockManagement.Core.Extensions
 
             string message = "Internal Server Error";
             var errorDetails = new ErrorDetails();
-           
+
             if (e.GetType() == typeof(ValidationException) || e.GetType() == typeof(ApplicationException))
             {
                 errorDetails.Message = e.Message;
                 httpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 errorDetails.StatusCode = httpContext.Response.StatusCode;
             }
-             
+
             else if (e.GetType() == typeof(UnauthorizedAccessException))
             {
                 errorDetails.Message = e.Message;

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using Castle.DynamicProxy;
+﻿using Castle.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
 using StockManagement.Core.Utilities.Interceptors;
 using StockManagement.Core.Utilities.IoC;
+using System.Diagnostics;
 
 namespace StockManagement.Core.Aspects.Autofac.Performance
 {

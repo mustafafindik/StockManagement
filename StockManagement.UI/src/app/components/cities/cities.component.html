@@ -1,0 +1,170 @@
+<!--begin::Content-->
+<div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
+ 
+
+  <!--begin::Entry-->
+  <div class="d-flex flex-column-fluid" style="margin-bottom: 50px;">
+    <!--begin::Container-->
+    <div class=" container ">
+   
+
+      <!--begin::Card-->
+      <div class="card card-custom">
+        <div class="card-header flex-wrap py-5">
+          <div class="card-title">
+            <h3 class="card-label">
+              Şehirler
+              <span class="d-block text-muted pt-2 font-size-sm">Şehirleri Burdan Bulabilirsiniz..</span>
+            </h3>
+          </div>
+          <div class="card-toolbar">
+            
+            <button mat-raised-button  color="accent"  class="mat-button-mt-4"  (click)="actions('Ekle',{})">
+              <mat-icon>add</mat-icon>
+              Yeni Ekle
+            </button><!-- Call 'update-stated-dialog' from _shared folder -->
+            <!--end::Button-->
+          </div>
+        </div>
+
+        <div class="card-body">
+          <!--begin: Datatable-->
+          <mat-form-field>
+            <mat-label>Ara..</mat-label>
+            <input
+              matInput
+              (keyup)="applyFilter($event)"
+              placeholder="izmir"
+              #input
+            />
+          </mat-form-field>
+          <div class="row align-items-center collapse action-group" [ngClass]="{'show' : selection.selected.length > 0}"  >
+            <div class="col-xl-12">
+              <div class="kt-form__group" style="display:inline">
+                
+                <div class="kt-form__control kt-form__group--inline" style="display:inline">
+                  <label class="kt--font-bold kt-font-danger-" id="selectedrowCount">
+                    <span> Seçilen Satır :  </span> {{ selection.selected.length }}
+                  </label> 
+              
+                    <button (click)="deleteCities()"
+                      mat-raised-button
+                      color="accent"
+                      matTooltip="Delete selected customers" 
+                      class="mat-button-mt-4">
+                      <mat-icon>delete</mat-icon>
+                      Hepsini Sil
+                    </button>&nbsp;<!-- Call 'delete-entity-dialog' from _shared folder -->
+                 
+      
+                  
+                  <button  mat-raised-button matTooltip="Update status for selected customers"  class="mat-button-mt-4">
+                    <mat-icon>update</mat-icon>
+                    Durum Güncelle
+                  </button><!-- Call 'update-stated-dialog' from _shared folder -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <mat-table #table [dataSource]="dataSource" matSort *ngIf="dataSource.data.length > 0">       
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+              <mat-header-cell *matHeaderCellDef class="mat-column-checkbox">
+                <mat-checkbox
+                  (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                  [color]="'primary'"
+                >
+                </mat-checkbox>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" class="mat-column-checkbox">
+                <mat-checkbox
+                  (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)"
+                  [color]="'primary'"
+                >
+                </mat-checkbox>
+              </mat-cell>
+            </ng-container>
+  
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef  mat-sort-header> Id. </mat-header-cell>
+              <mat-cell *matCellDef="let cities">
+                {{ cities.id }}
+              </mat-cell>
+            </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="cityName">
+              <mat-header-cell *matHeaderCellDef  mat-sort-header> Şehir Adı </mat-header-cell>
+              <mat-cell *matCellDef="let cities"> {{ cities.cityName }}  </mat-cell>
+            </ng-container>
+            <!-- Weight Column -->         
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef> Eylemler </mat-header-cell>
+              <mat-cell *matCellDef="let cities">
+                <div>
+                  <button
+                    (click)="actions('Güncelle',cities)"
+                    mat-icon-button
+                    color="primary"
+                    matTooltip="Düzenle"
+                  >
+                    <mat-icon>create</mat-icon></button
+                  >&nbsp;
+                </div>
+                <div>
+                  <button
+                
+                  (click)="actions('Sil',cities)"
+                    mat-icon-button
+                    color="warn"
+                    matTooltip="Sil"
+                  >
+                    <mat-icon>delete</mat-icon></button
+                  >&nbsp;
+                </div>
+                <button
+                  mat-icon-button
+                  [matMenuTriggerFor]="menu"
+                  matTooltip="Daha Fazla"
+                >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                 
+                  <button  (click)="actions('Detaylar',cities)" mat-menu-item>
+                    <mat-icon>list</mat-icon>
+                    <span>Detaylar</span>
+                  </button>                
+                  <button mat-menu-item>
+                    <mat-icon>notifications_off</mat-icon>
+                    <span>Eksra Alan</span>
+                  </button>
+                </mat-menu>
+              </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell"  colspan="4" style="padding-top: 12px">
+                 "{{ input.value }}" Aramasına göre sonuç bulunamadı.
+              </td>
+            </tr>
+          </mat-table>
+          <!--end: Datatable-->
+        </div>
+      </div>
+      <!--end::Card-->
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::Entry-->
+</div>
+<!--end::Content-->

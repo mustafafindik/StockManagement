@@ -1,0 +1,80 @@
+<div class="kt-portlet">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title">
+        Depo <strong>{{action}}</strong>
+      </h3>
+    </div>
+  </div>
+  <!--begin::Form-->
+  <div class="kt-form">
+    <div class="kt-portlet__body">
+      <form  [formGroup]="warehouseAddForm">
+      <div mat-dialog-content >
+          
+        <ng-template class="example-container" [ngIf]="action === 'Güncelle' || action ==='Ekle'">
+        <mat-form-field  style="display: block;margin-top:15px;">
+          <input placeholder="Depo Adı" type="text" matInput id="warehouseName" class="form-control"  formControlName="warehouseName" [(ngModel)]="local_data.warehouseName"   required>
+          <mat-error *ngIf="warehouseAddForm.get('warehouseName').hasError('required') && warehouseAddForm.get('warehouseName').touched">Depo Alanı Zorunludur</mat-error>
+        </mat-form-field>
+        <mat-form-field style="display: block;margin-top:15px;">
+          <input placeholder="Adres" type="text" matInput id="address" class="form-control"  formControlName="address" [(ngModel)]="local_data.address"   required>
+          <mat-error *ngIf="warehouseAddForm.get('address').hasError('minlength') && warehouseAddForm.get('address').touched"> Minimum 10 karakter olmalıdır.</mat-error>
+          <mat-error *ngIf="warehouseAddForm.get('address').hasError('required') && warehouseAddForm.get('address').touched "> Adres Alanı Zorunludur</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill"  style="display: block;margin-top:15px;">
+          <mat-label>Şehir Seçiniz</mat-label>
+          <mat-select [(value)]="local_data.cityId"  formControlName="city"  required>           
+            <mat-option  [value]="option.id" *ngFor="let option of citySelectList">{{ option.cityName }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="warehouseAddForm.get('city').hasError('required') && warehouseAddForm.get('city').touched"> Adres Alanı Zorunludur</mat-error>
+
+        </mat-form-field>
+      </ng-template>
+      
+      
+      <ng-template  [ngIf]="action === 'Sil'"> 
+          <b>{{local_data.warehouseName}}</b> Deposunu Silmek İstediğinizden Emin Misiniz ??
+        </ng-template>
+       
+       
+        <ng-template [ngIf]="action === 'Detaylar'">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Id" disabled value="{{local_data.id}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Depo Adı" disabled value="{{local_data.warehouseName}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Adress" disabled value="{{local_data.address}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Şehir " disabled value="{{local_data.city}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Oluşturan" disabled value="{{local_data.createdBy}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Oluşturma Tarihi" disabled value="{{local_data.createDate | date: 'dd/MM/yyyy HH:mm'}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Günceleyen" disabled value="{{local_data.modifiedBy}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Güncelleme Tarihi" disabled value="{{local_data.modifiedDate  | date: 'dd/MM/yyyy HH:mm'}}">
+          </mat-form-field>
+        </ng-template>
+      </div>
+
+    </form>
+    </div>
+    <div class="kt-portlet__foot">
+      <div class="kt-form__actions">
+        <button  style="margin-right: 10px;" color="accent" mat-raised-button *ngIf="action !== 'Detaylar'" mat-button (click)="doAction()">{{action}}</button>
+        <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Kapat</button>
+      </div>
+    </div>
+  </div>
+
+  <!--end::Form-->
+</div>

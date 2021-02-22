@@ -1,9 +1,9 @@
 ﻿using Castle.DynamicProxy;
+using StockManagement.Core.Aspects.Autofac.Exception;
+using StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using System;
 using System.Linq;
 using System.Reflection;
-using StockManagement.Core.Aspects.Autofac.Exception;
-using StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 
 namespace StockManagement.Core.Utilities.Interceptors
 {
