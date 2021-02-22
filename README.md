@@ -12,6 +12,5 @@
 - JWT
 - Serilog
 - Hangire
-- xUnit
 - ...
 
