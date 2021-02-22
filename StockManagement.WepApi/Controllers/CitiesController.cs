@@ -27,10 +27,10 @@ namespace StockManagement.WepApi.Controllers
             var result = _cityService.GetAll();
             if (result.IsSuccess)
             {
-                return Ok(result);
+                return Ok(result.Data);
             }
 
-            return BadRequest(result);
+            return BadRequest(result.Message);
 
         }
 
@@ -45,10 +45,10 @@ namespace StockManagement.WepApi.Controllers
             var result = _cityService.GetById(id);
             if (result.IsSuccess)
             {
-                return Ok(result);
+                return Ok(result.Data);
             }
 
-            return BadRequest(result);
+            return BadRequest(result.Message);
 
         }
 
