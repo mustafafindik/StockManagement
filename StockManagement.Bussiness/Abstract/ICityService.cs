@@ -11,7 +11,7 @@ namespace StockManagement.Business.Abstract
     /// </summary>
     public interface ICityService
     {
-        IDataResult<List<CityListDto>> GetAll();
+        IDataResult<List<CityDto>> GetAll();
         IDataResult<City> GetById(int cityId);
         IResult Add(City city);
         IResult Delete(City city);

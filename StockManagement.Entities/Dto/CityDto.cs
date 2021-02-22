@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using StockManagement.Core.Entities;
+using StockManagement.Entities.Concrete;
 
 namespace StockManagement.Entities.Dto
 {
-    public class CityListDto:IEntity
+    public class CityDto:BaseEntity,IEntity
     {
-        public int Id { get; set; }
         public string CityName { get; set; }
     }
 }

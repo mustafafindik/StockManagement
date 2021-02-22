@@ -89,11 +89,11 @@ namespace StockManagement.Business.Concrete
         [CacheAspect]
         [SecuredOperation("Cities.Get", Priority = 1)] //Bu Yetkiye sahip Kullanıcılar Erişebilir.
         [LogAspect(typeof(MsSqlLogger))]
-        public IDataResult<List<CityListDto>> GetAll()
+        public IDataResult<List<CityDto>> GetAll()
         {
             var query = _cityRepository.GetAll().ToList();
-            var cityListDto = _mapper.Map<List<CityListDto>>(query);
-            return new SuccessDataResult<List<CityListDto>>(cityListDto, "Şehirler Başarıyla Alındı.");
+            var cityListDto = _mapper.Map<List<CityDto>>(query);
+            return new SuccessDataResult<List<CityDto>>(cityListDto, "Şehirler Başarıyla Alındı.");
         }
 
 

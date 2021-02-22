@@ -12,7 +12,7 @@ namespace StockManagement.Business.Helpers
     {
         public AutoMapperHelper()
         {
-            CreateMap<City, CityListDto>().ReverseMap();
+            CreateMap<City, CityDto>().ReverseMap();
         }
     }
 }
