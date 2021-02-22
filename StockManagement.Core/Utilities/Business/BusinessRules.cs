@@ -6,7 +6,7 @@ namespace StockManagement.Core.Utilities.Business
     /// Gelen IResult Dönen İş kurallarını Döner eger içlerinden birisinde Issuccess false ile Mesajı döner.
     /// 
     /// </summary>
-    public class BusinessRules
+    public static class BusinessRules
     {
         public static IResult Run(params IResult[] logics)
         {
