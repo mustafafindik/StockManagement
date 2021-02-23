@@ -37,10 +37,12 @@ namespace StockManagement.Business.Concrete
 
 
         [CacheAspect] ///Verileri Cache alır
-        public IDataResult<City> GetById(int cityId)
+        //[SecuredOperation("Cities.Get", Priority = 1)] //Bu Yetkiye sahip Kullanıcılar Erişebilir.
+        public IDataResult<CityDto> GetById(int cityId)
         {
             var query = _cityRepository.Get(p => p.Id == cityId);
-            return new SuccessDataResult<City>(query, Messages.CityGetSuccessfully);
+            var cityDto = _mapper.Map<CityDto>(query);
+            return new SuccessDataResult<CityDto>(cityDto, Messages.CityGetSuccessfully);
 
         }
 
@@ -48,16 +50,16 @@ namespace StockManagement.Business.Concrete
         [ValidationAspect(typeof(CityValidator), Priority = 1)] //Gelen Veriyi Validate eder
         [TransactionScopeAspect] //Ekleme İşleminde Hata Olursa Geri alır Db ye Kayıt etmez
         [CacheRemoveAspect("ICityService.Get")] //Yeni veri eklendiği için ICityService.Get Metodlarındalari cacheleri temizler
-        public IResult Add(City city)
+        public IResult Add(CityDto cityDto)
         {
             //İş Kuralları BuniessRun ile beraber bağrıllırç
-            IResult result = BusinessRules.Run(CityNameExist(city.CityName)); //IResult Dönen Bussiness İşleri verilebilir.İstediğiniz kadar iş verebilriiz.
+            IResult result = BusinessRules.Run(CityNameExist(cityDto.CityName)); //IResult Dönen Bussiness İşleri verilebilir.İstediğiniz kadar iş verebilriiz.
             if (result != null)
             {
                 return result;
             }
 
-
+            var city = _mapper.Map<City>(cityDto);
             city = (City)_dateAndUserService.ForAdd(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
 
             _cityRepository.Add(city);
@@ -68,8 +70,9 @@ namespace StockManagement.Business.Concrete
 
         [TransactionScopeAspect] //Silme İşleminde Hata Olursa Geri alır Db ye Kayıt etmez
         [CacheRemoveAspect("ICityService.Get")] // veri Silindiğnde için ICityService.Get Metodlarındalari cacheleri temizler
-        public IResult Delete(City city)
+        public IResult Delete(CityDto cityDto)
         {
+            var city = _mapper.Map<City>(cityDto);
             _cityRepository.Delete(city);
             return new SuccessResult(Messages.CityDeletedSuccessfully);
         }
@@ -87,9 +90,8 @@ namespace StockManagement.Business.Concrete
         }
 
 
-        [CacheAspect]
+         [CacheAspect]
         //[SecuredOperation("Cities.Get", Priority = 1)] //Bu Yetkiye sahip Kullanıcılar Erişebilir.
-        [LogAspect(typeof(MsSqlLogger))]
         public IDataResult<List<CityDto>> GetAll()
         {
             var query = _cityRepository.GetAll().ToList();

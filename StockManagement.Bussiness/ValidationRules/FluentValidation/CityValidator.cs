@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using StockManagement.Entities.Concrete;
+using StockManagement.Entities.Dto;
 
 namespace StockManagement.Business.ValidationRules.FluentValidation
 {
-    public class CityValidator : AbstractValidator<City>
+    public class CityValidator : AbstractValidator<CityDto>
     {
         /// <summary>
         /// Burada City İle ilgili Validation Kuralları yazılır.

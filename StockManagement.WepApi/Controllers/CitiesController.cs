@@ -61,10 +61,10 @@ namespace StockManagement.WepApi.Controllers
 
         [HttpPost("add")]
 
-        public IActionResult Add(City city)
+        public IActionResult Add(CityDto cityDto)
         {
 
-            var result = _cityService.Add(city);
+            var result = _cityService.Add(cityDto);
             if (result.IsSuccess)
             {
                 return Ok(new { Message = result.Message });
@@ -98,9 +98,9 @@ namespace StockManagement.WepApi.Controllers
         /// <returns> Dönüş olarak IResult Sınıfından döner.</returns>
 
         [HttpPost("delete")]
-        public IActionResult Delete(City city)
+        public IActionResult Delete(CityDto cityDto)
         {
-            var result = _cityService.Delete(city);
+            var result = _cityService.Delete(cityDto);
             if (result.IsSuccess)
             {
                 return Ok(new { Message = result.Message });

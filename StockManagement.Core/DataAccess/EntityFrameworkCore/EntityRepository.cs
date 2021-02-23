@@ -73,9 +73,7 @@ namespace StockManagement.Core.DataAccess.EntityFrameworkCore
 
         public void Delete(T entity)
         {
-
-            var deletedEntityEntry = _context.Entry(entity);
-            deletedEntityEntry.State = EntityState.Deleted;
+            _context.Remove(entity);
             _context.SaveChanges();
 
         }
