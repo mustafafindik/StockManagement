@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StockManagement.Core.Entities.Concrete
+namespace StockManagement.Entities.Concrete
 {
     public class BaseEntity
     {

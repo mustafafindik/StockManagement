@@ -8,6 +8,7 @@ using StockManagement.Core.Utilities.Interceptors;
 using StockManagement.Core.Utilities.IoC;
 using System;
 using System.Collections.Generic;
+using StockManagement.Core.Constants;
 
 namespace StockManagement.Core.Aspects.Autofac.Logging
 {
@@ -19,7 +20,7 @@ namespace StockManagement.Core.Aspects.Autofac.Logging
         {
             if (loggerService.BaseType != typeof(LoggerServiceBase))
             {
-                throw new ArgumentException("AspectMessages.WrongLoggerType");
+                throw new ArgumentException(Messages.WrongLoggerType);
             }
 
             _loggerServiceBase = (LoggerServiceBase)Activator.CreateInstance(loggerService);

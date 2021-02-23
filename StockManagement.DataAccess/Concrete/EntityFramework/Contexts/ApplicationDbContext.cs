@@ -13,10 +13,8 @@ namespace StockManagement.DataAccess.Concrete.EntityFramework.Contexts
     /// </summary>
     public class ApplicationDbContext : DbContext
     {
-        private readonly IConfiguration _configuration;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IConfiguration configuration) : base(options)
         {
-            _configuration = configuration;
         }
 
 

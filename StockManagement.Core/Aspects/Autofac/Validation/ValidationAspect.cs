@@ -4,6 +4,7 @@ using StockManagement.Core.CrossCuttingConcerns.Validation;
 using StockManagement.Core.Utilities.Interceptors;
 using System;
 using System.Linq;
+using StockManagement.Core.Constants;
 
 namespace StockManagement.Core.Aspects.Autofac.Validation
 {
@@ -24,7 +25,7 @@ namespace StockManagement.Core.Aspects.Autofac.Validation
         {
             if (!typeof(IValidator).IsAssignableFrom(validatorType))
             {
-                throw new System.Exception($"Hatalı Validasyon Tipi");
+                throw new System.ArgumentException(Messages.WrongValidationType);
             }
 
             _validatorType = validatorType;

@@ -14,7 +14,7 @@ namespace StockManagement.Business.Helpers
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public SetDateAndUserService(IHttpContextAccessor httpContextAccessor)
+        public SetDateAndUserService()
         {
             _httpContextAccessor = ServiceHelper.ServiceProvider.GetService<IHttpContextAccessor>();
         }

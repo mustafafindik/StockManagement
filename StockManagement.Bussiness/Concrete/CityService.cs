@@ -13,6 +13,7 @@ using StockManagement.Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using StockManagement.Business.Constants;
 using StockManagement.Business.Helpers;
 using StockManagement.Core.Aspects.Autofac.Exception;
 using StockManagement.Entities.Dto;
@@ -41,7 +42,7 @@ namespace StockManagement.Business.Concrete
         public IDataResult<City> GetById(int cityId)
         {
             var query = _cityRepository.Get(p => p.Id == cityId);
-            return new SuccessDataResult<City>(query, "Şehir Başarıyla Alındı");
+            return new SuccessDataResult<City>(query, Messages.CityGetSuccessfully);
 
         }
 
@@ -62,7 +63,7 @@ namespace StockManagement.Business.Concrete
             city =(City)_dateAndUserService.ForAdd(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
 
             _cityRepository.Add(city);
-            return new SuccessResult("Şehir Başarıyla Eklendi.");
+            return new SuccessResult(Messages.CityAddedSuccessfully);
         }
 
 
@@ -72,7 +73,7 @@ namespace StockManagement.Business.Concrete
         public IResult Delete(City city)
         {
             _cityRepository.Delete(city);
-            return new SuccessResult("Şehir Başarıyla Silindi.");
+            return new SuccessResult(Messages.CityDeletedSuccessfully);
         }
 
         [ValidationAspect(typeof(CityValidator), Priority = 1)]//Gelen Veriyi Validate eder
@@ -84,7 +85,7 @@ namespace StockManagement.Business.Concrete
             var city = _mapper.Map<City>(cityDto);
             city = (City)_dateAndUserService.ForUpdate(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
             _cityRepository.Update(city,city.Id);
-            return new SuccessResult("Şehir Başarıyla Güncellendi.");
+            return new SuccessResult(Messages.CityUpdatedSuccessfully);
         }
 
 
@@ -95,7 +96,7 @@ namespace StockManagement.Business.Concrete
         {
             var query = _cityRepository.GetAll().ToList();
             var cityListDto = _mapper.Map<List<CityDto>>(query);
-            return new SuccessDataResult<List<CityDto>>(cityListDto, "Şehirler Başarıyla Alındı.");
+            return new SuccessDataResult<List<CityDto>>(cityListDto, Messages.CitiesGetSuccessfully);
         }
 
 
@@ -106,7 +107,7 @@ namespace StockManagement.Business.Concrete
             var result = _cityRepository.Get(p => p.CityName == cityName) != null;
             if (result)
             {
-                return new ErrorResult("Zaten Şehir Ekli");
+                return new ErrorResult(Messages.CityAlreadyExist);
             }
 
             return new SuccessResult();

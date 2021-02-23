@@ -1,6 +1,7 @@
 ﻿using Castle.DynamicProxy;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using StockManagement.Core.Constants;
 using StockManagement.Core.Extensions;
 using StockManagement.Core.Utilities.Interceptors;
 using StockManagement.Core.Utilities.IoC;
@@ -42,7 +43,7 @@ namespace StockManagement.Core.Aspects.Autofac.Security
                     return;
                 }
             }
-            throw new System.UnauthorizedAccessException("Yetkiniz Yok");
+            throw new System.UnauthorizedAccessException(Messages.AuthorizationDenied);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using StockManagement.Business.Abstract;
+using StockManagement.Business.Constants;
 using StockManagement.Core.Entities.Concrete;
 using StockManagement.Core.Utilities.Results;
 using StockManagement.Core.Utilities.Security.Hashing;
@@ -34,7 +35,7 @@ namespace StockManagement.Business.Concrete
                 IsActive = true
             };
             _userService.Add(user);
-            return new SuccessDataResult<User>(user, "Kullanıcı Kayıt Edildi.");
+            return new SuccessDataResult<User>(user, Messages.UserRegisteredSuccessfully);
         }
 
         public IDataResult<User> Login(UserLogin loginDto)
@@ -42,22 +43,22 @@ namespace StockManagement.Business.Concrete
             var userToCheck = _userService.GetByMail(loginDto.Email);
             if (userToCheck == null)
             {
-                return new ErrorDataResult<User>("Kullanıcı Bulunamadı");
+                return new ErrorDataResult<User>(Messages.UserNotFound);
             }
 
             if (!HashingHelper.VerifyPasswordHash(loginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordKey))
             {
-                return new ErrorDataResult<User>("Şifre Hatalı");
+                return new ErrorDataResult<User>(Messages.PasswordIncorrect);
             }
 
-            return new SuccessDataResult<User>(userToCheck, "Başarıyla Giriş Yapıldı.");
+            return new SuccessDataResult<User>(userToCheck, Messages.UserLoginSuccessfully);
         }
 
         public IResult UserExists(string email)
         {
             if (_userService.GetByMail(email) != null)
             {
-                return new ErrorResult("Kullanıcı Zaten Var");
+                return new ErrorResult(Messages.UserAlreadyExist);
             }
             return new SuccessResult();
         }
@@ -66,7 +67,7 @@ namespace StockManagement.Business.Concrete
         {
             var claims = _userService.GetRoles(user);
             var accessToken = _tokenHelper.CreateToken(user, claims);
-            return new SuccessDataResult<AccessToken>(accessToken, "Token Oluştu.");
+            return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
     }
 }
