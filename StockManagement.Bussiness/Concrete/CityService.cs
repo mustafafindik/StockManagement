@@ -1,8 +1,10 @@
-﻿using StockManagement.Business.Abstract;
+﻿using AutoMapper;
+using StockManagement.Business.Abstract;
+using StockManagement.Business.Constants;
+using StockManagement.Business.Helpers;
 using StockManagement.Business.ValidationRules.FluentValidation;
 using StockManagement.Core.Aspects.Autofac.Caching;
 using StockManagement.Core.Aspects.Autofac.Logging;
-using StockManagement.Core.Aspects.Autofac.Security;
 using StockManagement.Core.Aspects.Autofac.Transaction;
 using StockManagement.Core.Aspects.Autofac.Validation;
 using StockManagement.Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
@@ -10,13 +12,9 @@ using StockManagement.Core.Utilities.Business;
 using StockManagement.Core.Utilities.Results;
 using StockManagement.DataAccess.Abstract;
 using StockManagement.Entities.Concrete;
+using StockManagement.Entities.Dto;
 using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
-using StockManagement.Business.Constants;
-using StockManagement.Business.Helpers;
-using StockManagement.Core.Aspects.Autofac.Exception;
-using StockManagement.Entities.Dto;
 
 namespace StockManagement.Business.Concrete
 {
@@ -60,7 +58,7 @@ namespace StockManagement.Business.Concrete
             }
 
 
-            city =(City)_dateAndUserService.ForAdd(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
+            city = (City)_dateAndUserService.ForAdd(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
 
             _cityRepository.Add(city);
             return new SuccessResult(Messages.CityAddedSuccessfully);
@@ -81,10 +79,10 @@ namespace StockManagement.Business.Concrete
         [CacheRemoveAspect("ICityService.Get")] // veri Güncelleme için ICityService.Get Metodlarındalari cacheleri temizler
         public IResult Update(CityDto cityDto)
         {
-            
+
             var city = _mapper.Map<City>(cityDto);
             city = (City)_dateAndUserService.ForUpdate(city); // Otomatik Olarak BaseEntitydeki alanları doldurur.
-            _cityRepository.Update(city,city.Id);
+            _cityRepository.Update(city, city.Id);
             return new SuccessResult(Messages.CityUpdatedSuccessfully);
         }
 

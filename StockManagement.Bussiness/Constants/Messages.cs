@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StockManagement.Business.Constants
+﻿namespace StockManagement.Business.Constants
 {
-    public static  class Messages
+    public static class Messages
     {
         public const string UserRegisteredSuccessfully = "Kullanıcı Başarıyla Kayıt Oldu.";
         public const string UserNotFound = "Kullanıcı Bulunamadı.";

@@ -78,9 +78,9 @@ namespace StockManagement.WepApi.Controllers
         /// </summary>
         /// <returns> Dönüş olarak IResult Sınıfından döner.</returns>
         [HttpPost("update")]
-        public IActionResult Update([FromBody]  CityDto cityDto)
+        public IActionResult Update([FromBody] CityDto cityDto)
         {
-           
+
 
             var result = _cityService.Update(cityDto);
             if (result.IsSuccess)

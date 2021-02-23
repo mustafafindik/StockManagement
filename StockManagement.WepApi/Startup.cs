@@ -30,11 +30,11 @@ namespace StockManagement.WepApi
         {
 
             services.AddControllers();
-         
+
             services.AddDbContext<ApplicationDbContext>(options =>
-                    
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("StockManagement.DataAccess")).EnableSensitiveDataLogging(),ServiceLifetime.Scoped
-                
+
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("StockManagement.DataAccess")).EnableSensitiveDataLogging(), ServiceLifetime.Scoped
+
                 );
 
             //Cors AppsttingJson'dan al

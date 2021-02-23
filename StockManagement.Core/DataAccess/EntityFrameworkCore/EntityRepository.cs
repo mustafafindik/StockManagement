@@ -3,7 +3,6 @@ using StockManagement.Core.Entities;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using StockManagement.Core.Entities.Concrete;
 
 namespace StockManagement.Core.DataAccess.EntityFrameworkCore
 {

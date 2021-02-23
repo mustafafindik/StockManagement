@@ -1,7 +1,6 @@
 ﻿
 using StockManagement.Core.Entities;
 using System;
-using StockManagement.Core.Entities.Concrete;
 
 namespace StockManagement.Entities.Concrete
 {

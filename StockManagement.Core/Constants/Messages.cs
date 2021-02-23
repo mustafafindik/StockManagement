@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StockManagement.Core.Constants
+﻿namespace StockManagement.Core.Constants
 {
     public static class Messages
     {

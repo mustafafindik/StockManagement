@@ -1,10 +1,10 @@
 ﻿using Castle.DynamicProxy;
 using FluentValidation;
+using StockManagement.Core.Constants;
 using StockManagement.Core.CrossCuttingConcerns.Validation;
 using StockManagement.Core.Utilities.Interceptors;
 using System;
 using System.Linq;
-using StockManagement.Core.Constants;
 
 namespace StockManagement.Core.Aspects.Autofac.Validation
 {

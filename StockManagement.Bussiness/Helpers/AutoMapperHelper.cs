@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoMapper;
-using StockManagement.Core.Entities.Concrete;
+﻿using AutoMapper;
 using StockManagement.Entities.Concrete;
 using StockManagement.Entities.Dto;
 

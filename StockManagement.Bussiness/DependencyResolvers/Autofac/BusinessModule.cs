@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Autofac;
+﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using AutoMapper;
 using Castle.DynamicProxy;
@@ -10,6 +9,7 @@ using StockManagement.Core.Utilities.Interceptors;
 using StockManagement.Core.Utilities.Security.Jwt;
 using StockManagement.DataAccess.Abstract;
 using StockManagement.DataAccess.Concrete.EntityFramework;
+using System.Collections.Generic;
 
 namespace StockManagement.Business.DependencyResolvers.Autofac
 {

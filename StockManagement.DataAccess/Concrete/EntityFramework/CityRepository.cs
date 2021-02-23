@@ -11,6 +11,6 @@ namespace StockManagement.DataAccess.Concrete.EntityFramework
         {
         }
 
-        
+
     }
 }

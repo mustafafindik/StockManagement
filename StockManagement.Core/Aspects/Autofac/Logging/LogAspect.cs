@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using StockManagement.Core.Constants;
 using StockManagement.Core.CrossCuttingConcerns.Logging;
 using StockManagement.Core.CrossCuttingConcerns.Logging.Serilog;
 using StockManagement.Core.Utilities.Interceptors;
 using StockManagement.Core.Utilities.IoC;
 using System;
 using System.Collections.Generic;
-using StockManagement.Core.Constants;
 
 namespace StockManagement.Core.Aspects.Autofac.Logging
 {

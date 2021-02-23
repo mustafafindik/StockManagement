@@ -1,7 +1,7 @@
 ﻿using StockManagement.Core.Utilities.Results;
 using StockManagement.Entities.Concrete;
-using System.Collections.Generic;
 using StockManagement.Entities.Dto;
+using System.Collections.Generic;
 
 namespace StockManagement.Business.Abstract
 {

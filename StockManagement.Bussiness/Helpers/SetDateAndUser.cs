@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using StockManagement.Core.Entities;
-using StockManagement.Core.Entities.Concrete;
 using StockManagement.Core.Utilities.IoC;
 using StockManagement.Entities.Concrete;
+using System;
 
 namespace StockManagement.Business.Helpers
 {
@@ -20,7 +17,7 @@ namespace StockManagement.Business.Helpers
         }
 
 
-        public  IEntity ForAdd(BaseEntity entity)
+        public IEntity ForAdd(BaseEntity entity)
         {
             entity.CreateDate = DateTime.Now;
             entity.ModifiedDate = DateTime.Now;
